@@ -1,5 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import jakarta.persistence.Entity;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
