@@ -14,6 +14,38 @@ public class Audit_Report {
     @CreatedDate
     private LocalDateTime createdAt;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public UUID getReportId() {
+        return reportId;
+    }
+
+    public void setReportId(UUID reportId) {
+        this.reportId = reportId;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     @LastModifiedDate
     private LocalDateTime updatedAt;
 }

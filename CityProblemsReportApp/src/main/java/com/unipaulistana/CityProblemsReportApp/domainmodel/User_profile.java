@@ -16,5 +16,94 @@ public class User_profile {
     private Optional<User> following;
     private String profilePictureUrl;
     private int Totalupvotes; //joincolumn de post
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Optional<User> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Optional<User> followers) {
+        this.followers = followers;
+    }
+
+    public Optional<User> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Optional<User> following) {
+        this.following = following;
+    }
+
+    public String getProfilePictureUrl() {
+        return profilePictureUrl;
+    }
+
+    public void setProfilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
+    }
+
+    public int getTotalupvotes() {
+        return Totalupvotes;
+    }
+
+    public void setTotalupvotes(int totalupvotes) {
+        Totalupvotes = totalupvotes;
+    }
+
+    public int getTotaldownvotes() {
+        return Totaldownvotes;
+    }
+
+    public void setTotaldownvotes(int totaldownvotes) {
+        Totaldownvotes = totaldownvotes;
+    }
+
     private int Totaldownvotes;  //joincolumn de post
 }

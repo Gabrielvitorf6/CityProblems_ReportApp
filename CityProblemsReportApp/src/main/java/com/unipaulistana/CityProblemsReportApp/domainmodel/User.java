@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-
+@Entity
+@Table(name = "TBL_USER", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password")
+@Index(name = "IDX_")})
 public class User {
     private UUID id;
     private String username;
