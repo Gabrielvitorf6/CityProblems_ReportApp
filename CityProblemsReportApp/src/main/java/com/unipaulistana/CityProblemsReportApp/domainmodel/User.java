@@ -27,6 +27,7 @@ public class User {
     private List<Audit_UserPoints> auditUserPoints;
     private List<Audit_Report> auditReports;
 
+
     //Getters e Setters
 
 
