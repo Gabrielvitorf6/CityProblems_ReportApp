@@ -6,9 +6,15 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "TBL_USER", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password")
-@Index(name = "IDX_")})
+@Table(name = "TBL_USER", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
+@Index(name = "IDX_EMAIL", columnList = "email"),
+@Index(name = "IDX_PASSWORD", columnList = "password")
+
+})
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private UUID id;
     private String username;
     private String password;
