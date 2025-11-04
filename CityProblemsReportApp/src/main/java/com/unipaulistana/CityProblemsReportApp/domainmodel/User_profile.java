@@ -1,13 +1,24 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Entity
+@Table(name = "TBL_USER_PROFILE", indexes = {@Index(name = "IDX_NICKNAME", columnList = "nickname")
+})
 public class User_profile {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false)
     private UUID id;
+
+    @Column(name = "NICKNAME",  unique = true, nullable = false)
     private String nickname;
+
     private List<Post> posts;
     private String bio;
     private LocalDateTime createdAt;

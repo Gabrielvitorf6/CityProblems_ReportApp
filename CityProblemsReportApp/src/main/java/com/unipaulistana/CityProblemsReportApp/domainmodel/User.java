@@ -8,31 +8,56 @@ import java.util.UUID;
 @Entity
 @Table(name = "TBL_USER", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
 @Index(name = "IDX_EMAIL", columnList = "email"),
-@Index(name = "IDX_PASSWORD", columnList = "password")
-
+@Index(name = "IDX_PASSWORD", columnList = "password"),@Index(name = "IDX_PHONE", columnList = "phone"),
+@Index(name = "IDX_CPF", columnList = "cpf")
 })
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private UUID id;
+
+    @Column(name = "USERNAME",  nullable = false,  unique = true)
     private String username;
+
+    @Column(name = "PASSWORD",  nullable = false, length = 20)
     private String password;
+
+    @Column(name = "EMAIL",   nullable = false, length = 60)
     private String email;
+
+    @Column(name = "PHONE",   nullable = false)
     private String phone;
+
+    @Column(name = "CPF",    nullable = false,   unique = true)
     private String cpf;
+
     private String adress;
     private String adress_number;
     private String city;
     private String state;
     private String country;
     private String CEP;
+
+    @OneToMany
     private Set<User_Tag> userTag;
+
+    @OneToOne
     private List<Decorations> decorationsList;
+
+    @OneToOne
     private Set<User_profile> profile;
+
+    @OneToMany
     private Set<User_Points> userPoints;
+
+    @OneToMany
     private List<Audit_User> auditUser;
+
+    @OneToMany
     private List<Audit_UserPoints> auditUserPoints;
+
+    @OneToMany
     private List<Audit_Report> auditReports;
 
 
