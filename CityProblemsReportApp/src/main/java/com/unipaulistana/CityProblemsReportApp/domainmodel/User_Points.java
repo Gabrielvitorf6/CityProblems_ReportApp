@@ -1,34 +1,27 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Set;
 import java.util.UUID;
 
-public class User_Points {
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "TBL_USERPOINTS")
+public class User_Points extends Auditable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private UUID id;
-    private UUID userId;
-    private int points;
 
-    public UUID getId() {
-        return id;
-    }
+    private Set<User> user; //Usuário dono dos pontos : OneToOne
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    private int points; //Total de pontos do usuário
 
-    public UUID getUserId() {
-        return userId;
-    }
 
-    public void setUserId(UUID userId) {
-        this.userId = userId;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
 }

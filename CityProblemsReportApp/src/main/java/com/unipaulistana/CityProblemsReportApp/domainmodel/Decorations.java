@@ -1,46 +1,31 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+import java.util.Set;
 import java.util.UUID;
 
-public class Decorations {
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Decorations extends Auditable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private UUID id;
+
+    @Column(nullable = false, length = 100)
     private String title;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getPointsValue() {
-        return pointsValue;
-    }
-
-    public void setPointsValue(int pointsValue) {
-        this.pointsValue = pointsValue;
-    }
-
+    @Column(nullable = false, length  = 200)
     private String description;
-    private int pointsValue; /*quantidade de pontos que o usuário
+
+    @Column(nullable = false)
+    private int ValuePoints; /*quantidade de pontos que o usuário
      condecorado recebe ao receber essa condecoração */
 
-
+    private Set<Post> posts; //Condecorações de um post : ManyToOne
 }

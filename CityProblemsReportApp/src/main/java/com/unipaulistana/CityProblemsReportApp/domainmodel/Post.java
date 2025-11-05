@@ -1,108 +1,38 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class Post {
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Post extends Auditable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
     private UUID id;
+
+    @Column(nullable = false, length = 100)
     private String title;
-    private Set<User> user;
-    private Set<PointOfReport>  pointOfReport;
-    private Set<PointOfReport_Tag> pointOfReportTag;
+
     private int Upvotes;
+
     private int Downvotes;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private List<Decorations> decorations;
-    private String comments;
 
-    public UUID getId() {
-        return id;
-    }
+    @Column(length = 500)
+    private String comment;
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    private List<Decorations> decorations; //Condecorações do post: OneToMany com decorations
 
-    public String getTitle() {
-        return title;
-    }
+    private Set<User_profile> userProfile; //perfil que fez o post: OneToOne com profile
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    private Set<PointOfReport>  pointOfReport;//ponto de report do post: OnetoOne com PointOfReport
 
-    public Set<User> getUser() {
-        return user;
-    }
-
-    public void setUser(Set<User> user) {
-        this.user = user;
-    }
-
-    public Set<PointOfReport> getPointOfReport() {
-        return pointOfReport;
-    }
-
-    public void setPointOfReport(Set<PointOfReport> pointOfReport) {
-        this.pointOfReport = pointOfReport;
-    }
-
-    public Set<PointOfReport_Tag> getPointOfReportTag() {
-        return pointOfReportTag;
-    }
-
-    public void setPointOfReportTag(Set<PointOfReport_Tag> pointOfReportTag) {
-        this.pointOfReportTag = pointOfReportTag;
-    }
-
-    public int getUpvotes() {
-        return Upvotes;
-    }
-
-    public void setUpvotes(int upvotes) {
-        Upvotes = upvotes;
-    }
-
-    public int getDownvotes() {
-        return Downvotes;
-    }
-
-    public void setDownvotes(int downvotes) {
-        Downvotes = downvotes;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public List<Decorations> getDecorations() {
-        return decorations;
-    }
-
-    public void setDecorations(List<Decorations> decorations) {
-        this.decorations = decorations;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
 }
