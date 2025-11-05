@@ -3,34 +3,51 @@ package com.unipaulistana.CityProblemsReportApp.domainmodel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Entity
 @Table(name = "TBL_USER_PROFILE", indexes = {@Index(name = "IDX_NICKNAME", columnList = "nickname")
 })
 public class User_profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", unique = true, nullable = false, updatable = false)
     private UUID id;
 
-    @Column(name = "NICKNAME",  unique = true, nullable = false)
+    @Column(unique = true, nullable = false)
     private String nickname;
 
+    @Column(nullable = true, length = 1000)
     private String bio;
+
+    @Column(nullable = true)
     private String profilePictureUrl;
+
+    @Column(nullable = true)
     private int Totalupvotes; //joincolumn de post
 
-    private Set<User_Tag> userTag; //tags do perfil : OnetoMany com User_tag
-    private List<Decorations> decorationsList; //lista de condecoraões : OneToMany (Essa em especifico puxa o total de condecorções da conta)
+    @OneToMany(mappedBy = "userProfile",  fetch = FetchType.EAGER)
+    private Set<Profile_tag> userTag; //tags do perfil : OnetoMany com Profile_tag
+
+    @OneToMany(mappedBy = "userProfile",   fetch = FetchType.EAGER)
+    private List<Decorations> decorationsList; //lista de condecorações : OneToMany (Essa em específico puxa o total de condecorções da conta)
+
+    @OneToMany(mappedBy = "userProfile", fetch = FetchType.EAGER)
     private List<Post> posts; //Posts do perfil : OneToMany
-    private Set<User> user; //Usuário do perfil : OneToOne com User
+
+    @OneToMany(mappedBy = "userProfile", fetch =  FetchType.EAGER)
+    private List<User_Points> userPoints;
+
+    @OneToOne
+    //@JoinColumn(name = "user")
+    private User user; //Usuário do perfil : OneToOne com User
+
     //Coluna com seguidores e seguindo tem que ser implementada, falar com o professor
 }

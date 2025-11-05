@@ -4,6 +4,7 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Entity
 public class Post extends Auditable {
     @Id
@@ -29,10 +32,13 @@ public class Post extends Auditable {
     @Column(length = 500)
     private String comment;
 
+    @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<Decorations> decorations; //Condecorações do post: OneToMany com decorations
 
-    private Set<User_profile> userProfile; //perfil que fez o post: OneToOne com profile
+    @ManyToOne
+    //@JoinColumn(name = "posts")
+    private User_profile userProfile; //perfil que fez o post: ManyToOne com profile
 
-    private Set<PointOfReport>  pointOfReport;//ponto de report do post: OnetoOne com PointOfReport
-
+    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
+    private PointOfReport pointOfReport;
 }

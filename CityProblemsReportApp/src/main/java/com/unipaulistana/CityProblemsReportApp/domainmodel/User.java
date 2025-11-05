@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,8 @@ import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Entity
 @Table(name = "TBL_USER", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
@@ -21,7 +24,7 @@ import java.util.UUID;
 public class User extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false, updatable = false)
+    @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
     @Column(nullable = false)
@@ -57,8 +60,6 @@ public class User extends Auditable {
     @Column(nullable = false, length = 8)
     private String CEP;
 
-    private Set<User_profile> profile; //perfil do user : onetoone com userprofile
-    private Set<User_Points> userPoints; //quantidade de pontos do usuário : OnetoMany
-
-
-}
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private User_profile userProfile; //perfil do user : onetoone com userprofile
+    }

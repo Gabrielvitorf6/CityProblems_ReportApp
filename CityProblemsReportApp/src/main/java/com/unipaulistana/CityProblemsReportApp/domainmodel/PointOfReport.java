@@ -4,18 +4,16 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.context.annotation.Profile;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.ToString;
 
-import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Entity
 public class PointOfReport extends Auditable {
     @Id
@@ -53,9 +51,11 @@ public class PointOfReport extends Auditable {
     @Column
     private Double longitude;
 
-    private Set<User_profile> userProfile; //Perfil que criou o POR: OneToOne
+    @OneToOne
+    //@JoinColumn(name = "PointOfReportID")
+    private Post post; //Perfil que criou o POR: OneToOne
 
-    private List<PointOfReport_Tag> pointOfReportTags;
-
-    private int pointsReceived;
+    @OneToOne
+    private PointOfReport_Tag pointOfReportTag; //perfil do user : onetoone com userprofile
+    //Lista de tags do ponto de report: OneToMany
 }

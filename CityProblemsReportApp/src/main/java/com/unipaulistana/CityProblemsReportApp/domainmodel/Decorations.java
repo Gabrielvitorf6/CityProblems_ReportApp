@@ -4,12 +4,15 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Entity
 public class Decorations extends Auditable {
     @Id
@@ -27,5 +30,11 @@ public class Decorations extends Auditable {
     private int ValuePoints; /*quantidade de pontos que o usuário
      condecorado recebe ao receber essa condecoração */
 
-    private Set<Post> posts; //Condecorações de um post : ManyToOne
+    @ManyToOne
+//    @JoinColumn(name = "decoration_id")
+    private Post post; //Condecorações de um post : ManyToOne
+
+    @ManyToOne
+    //@JoinColumn(name = "userProfile")
+    private User_profile userProfile;
 }

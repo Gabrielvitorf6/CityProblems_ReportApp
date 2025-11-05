@@ -4,11 +4,14 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+
 @Entity
 public class PointOfReport_Tag extends Auditable {
     @Id
@@ -22,8 +25,10 @@ public class PointOfReport_Tag extends Auditable {
     @Column(nullable = false, length = 200)
     private String description;
 
+    @OneToOne
+    private User user; //Tags do PointOfReport : ManyToOne
 
-    private PointOfReport pointOfReportTags; //Tags do PointOfReport : ManyToOne
-
+    @OneToOne
+    private PointOfReport_Tag pointOfReportTag;
 
 }
