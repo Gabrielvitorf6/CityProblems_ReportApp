@@ -1,13 +1,11 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -15,17 +13,19 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(name = "TBL_USERPOINTS")
+@Table(indexes = {
+        @Index(name = "IDX_USERPROFILE", columnList = "userProfile")
+})
 public class User_Points extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User_profile userProfile; //Perfil dono dos pontos: ManyToOne
 
-    @Column
+    @Column(nullable = false, updatable = true)
     private int points; //Total de pontos do usuário
 
     //Entidade para mapear os pontos dos usuários

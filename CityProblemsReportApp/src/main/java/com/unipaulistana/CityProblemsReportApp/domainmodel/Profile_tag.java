@@ -12,11 +12,11 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(name = "TBL_USER_TAG", indexes = {@Index(name = "IDX_TITLE", columnList = "title")
+@Table( indexes = {@Index(name = "IDX_TITLE", columnList = "title")
 })
 public class Profile_tag {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)
     private UUID id;
 

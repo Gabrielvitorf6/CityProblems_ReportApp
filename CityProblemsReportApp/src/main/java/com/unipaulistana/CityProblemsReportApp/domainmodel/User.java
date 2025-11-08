@@ -1,13 +1,10 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
-import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -15,16 +12,16 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(name = "TBL_USER", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
+@Table(indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
         @Index(name = "IDX_PASSWORD", columnList = "password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
-        @Index(name = "IDX_CPF", columnList = "CPF")
+        @Index(name = "IDX_CPF", columnList = "cpf")
 })
 public class User extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(nullable = false, updatable = false)
     private UUID id;
 
     @Column(nullable = false)

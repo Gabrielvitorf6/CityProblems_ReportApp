@@ -1,4 +1,4 @@
-package com.unipaulistana.CityProblemsReportApp.domainmodel.audit;
+package com.unipaulistana.CityProblemsReportApp.audit;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.AuditorAware;
