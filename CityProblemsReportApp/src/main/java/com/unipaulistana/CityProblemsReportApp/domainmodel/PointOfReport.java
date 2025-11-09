@@ -1,13 +1,11 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -15,9 +13,15 @@ import java.util.UUID;
 @ToString
 
 @Entity
+@Table(indexes = {
+        @Index(name = "IDX_POST", columnList = "post"),
+        @Index(name = "IDX_POINTOFREPORTTAG", columnList = "pointOfReportTag"),
+        @Index(name = "IDX_CEP", columnList = "CEP"),
+        @Index(name = "IDX_ADRESS", columnList = "adress")
+})
 public class PointOfReport extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)
     private UUID id;
 
@@ -56,6 +60,5 @@ public class PointOfReport extends Auditable {
     private Post post; //Perfil que criou o POR: OneToOne
 
     @OneToOne
-    private PointOfReport_Tag pointOfReportTag; //perfil do user : onetoone com userprofile
-    //Lista de tags do ponto de report: OneToMany
+    private PointOfReport_Tag pointOfReportTag;     //Lista de tags do ponto de report: OneToOne
 }

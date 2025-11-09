@@ -1,14 +1,12 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -16,29 +14,37 @@ import java.util.UUID;
 @ToString
 
 @Entity
+@Table(indexes = {
+        @Index(name = "IDX_POINTOFREPORT", columnList = "pointOfReport"),
+        @Index(name = "IDX_USERPROFILE", columnList = "userProfile")
+})
 public class Post extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(updatable = false)
     private UUID id;
 
     @Column(nullable = false, length = 100)
     private String title;
 
-    private int Upvotes;
+    @Column
+    private int upVotes;
 
-    private int Downvotes;
+    @Column
+    private int downVotes;
 
     @Column(length = 500)
     private String comment;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
-    private List<Decorations> decorations; //Condecorações do post: OneToMany com decorations
+    private List<Decoration> decorations; //Condecorações do post: OneToMany com decorations
 
     @ManyToOne
-    //@JoinColumn(name = "posts")
     private User_profile userProfile; //perfil que fez o post: ManyToOne com profile
 
     @OneToOne(mappedBy = "post", cascade = CascadeType.ALL)
     private PointOfReport pointOfReport;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

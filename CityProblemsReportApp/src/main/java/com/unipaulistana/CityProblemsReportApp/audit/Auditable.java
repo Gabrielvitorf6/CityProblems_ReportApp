@@ -1,4 +1,4 @@
-package com.unipaulistana.CityProblemsReportApp.domainmodel.audit;
+package com.unipaulistana.CityProblemsReportApp.audit;
 
 
 import jakarta.persistence.EntityListeners;

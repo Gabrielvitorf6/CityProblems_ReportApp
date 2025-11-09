@@ -14,11 +14,11 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(name = "TBL_USER_PROFILE", indexes = {@Index(name = "IDX_NICKNAME", columnList = "nickname")
+@Table( indexes = {@Index(name = "IDX_NICKNAME", columnList = "nickname")
 })
 public class User_profile {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(unique = true, nullable = false)
@@ -37,7 +37,7 @@ public class User_profile {
     private Set<Profile_tag> userTag; //tags do perfil : OnetoMany com Profile_tag
 
     @OneToMany(mappedBy = "userProfile",   fetch = FetchType.EAGER)
-    private List<Decorations> decorationsList; //lista de condecorações : OneToMany (Essa em específico puxa o total de condecorções da conta)
+    private List<Decoration> decorationsList; //lista de condecorações : OneToMany (Essa em específico puxa o total de condecorções da conta)
 
     @OneToMany(mappedBy = "userProfile", fetch = FetchType.EAGER)
     private List<Post> posts; //Posts do perfil : OneToMany
@@ -49,5 +49,7 @@ public class User_profile {
     //@JoinColumn(name = "user")
     private User user; //Usuário do perfil : OneToOne com User
 
+    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL)
+    private List<Comment> comments;
     //Coluna com seguidores e seguindo tem que ser implementada, falar com o professor
 }

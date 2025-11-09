@@ -1,12 +1,11 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.audit.Auditable;
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Set;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -14,9 +13,14 @@ import java.util.UUID;
 @ToString
 
 @Entity
-public class Decorations extends Auditable {
+@Table(indexes = {
+        @Index(name = "IDX_USERPROFILE", columnList = "userProfile"),
+        @Index(name = "IDX_TITLE", columnList = "title"),
+        @Index(name = "IDX_DESCRIPTION", columnList = "description")
+})
+public class Decoration extends Auditable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)
     private UUID id;
 
@@ -27,7 +31,7 @@ public class Decorations extends Auditable {
     private String description;
 
     @Column(nullable = false)
-    private int ValuePoints; /*quantidade de pontos que o usuário
+    private int valuePoints; /*quantidade de pontos que o usuário
      condecorado recebe ao receber essa condecoração */
 
     @ManyToOne
