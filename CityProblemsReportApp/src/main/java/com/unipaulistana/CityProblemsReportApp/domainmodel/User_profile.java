@@ -52,4 +52,93 @@ public class User_profile {
     @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL)
     private List<Comment> comments;
     //Coluna com seguidores e seguindo tem que ser implementada, falar com o professor
+
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getProfilePictureUrl() {
+        return profilePictureUrl;
+    }
+
+    public void setProfilePictureUrl(String profilePictureUrl) {
+        this.profilePictureUrl = profilePictureUrl;
+    }
+
+    public int getTotalupvotes() {
+        return Totalupvotes;
+    }
+
+    public void setTotalupvotes(int totalupvotes) {
+        Totalupvotes = totalupvotes;
+    }
+
+    public Set<Profile_tag> getUserTag() {
+        return userTag;
+    }
+
+    public void setUserTag(Set<Profile_tag> userTag) {
+        this.userTag = userTag;
+    }
+
+    public List<Decoration> getDecorationsList() {
+        return decorationsList;
+    }
+
+    public void setDecorationsList(List<Decoration> decorationsList) {
+        this.decorationsList = decorationsList;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public List<User_Points> getUserPoints() {
+        return userPoints;
+    }
+
+    public void setUserPoints(List<User_Points> userPoints) {
+        this.userPoints = userPoints;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }

@@ -1,4 +1,4 @@
-package com.unipaulistana.CityProblemsReportApp.domainmodel.service;
+package com.unipaulistana.CityProblemsReportApp.service;
 
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.repositores.UserRepository;
@@ -24,25 +24,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(UUID id) {
         return (User) this.repository.findById(id).orElse(null);
-    }
-
-    @Override
-    public void deleteById(UUID id) { this.repository.deleteById(id);   
-    }
-
-    @Override
-    public Optional<User> create(User user) {
-        return this.repository.save(user);
-    }
-
-    @Override
-    public Optional<User> update(User user) {
-        return this.repository.save(user);
-    }
-
-    @Override
-    public Optional<User> partialUpdate(User user) {
-        return this.repository.save(user); 
     }
 
     @Override

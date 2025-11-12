@@ -29,4 +29,36 @@ public class Profile_tag {
     @ManyToOne(fetch = FetchType.LAZY)
     //@JoinColumn(name = "userProfile")
     private User_profile userProfile; //Tags de um perfil :  ManyToOne
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public User_profile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(User_profile userProfile) {
+        this.userProfile = userProfile;
+    }
 }

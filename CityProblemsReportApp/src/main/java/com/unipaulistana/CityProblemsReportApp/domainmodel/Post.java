@@ -47,4 +47,76 @@ public class Post extends Auditable {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(int upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public int getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(int downVotes) {
+        this.downVotes = downVotes;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public List<Decoration> getDecorations() {
+        return decorations;
+    }
+
+    public void setDecorations(List<Decoration> decorations) {
+        this.decorations = decorations;
+    }
+
+    public User_profile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(User_profile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public PointOfReport getPointOfReport() {
+        return pointOfReport;
+    }
+
+    public void setPointOfReport(PointOfReport pointOfReport) {
+        this.pointOfReport = pointOfReport;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }

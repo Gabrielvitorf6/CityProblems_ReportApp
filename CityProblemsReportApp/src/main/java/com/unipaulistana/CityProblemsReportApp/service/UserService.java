@@ -1,4 +1,4 @@
-package com.unipaulistana.CityProblemsReportApp.domainmodel.service;
+package com.unipaulistana.CityProblemsReportApp.service;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
 
@@ -11,14 +11,6 @@ public interface UserService {
     List<User> findAll();
 
     User findById(UUID id);
-
-    void deleteById(UUID id);
-
-    Optional<User> create(User user);
-
-    Optional<User> update(User user);
-
-    Optional<User> partialUpdate(User user);
 
     User findByUsername(String username);
 

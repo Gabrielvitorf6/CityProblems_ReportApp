@@ -16,12 +16,19 @@ public class Vote extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
+    private UUID id;
 
     /*public enum VoteType{
         upvote(1),
         downvote(-1);
 */
 
+    public UUID getId() {
+        return id;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+}
 

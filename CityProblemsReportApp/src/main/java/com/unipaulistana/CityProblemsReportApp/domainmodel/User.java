@@ -12,7 +12,7 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
+@Table(name = "users", indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
         @Index(name = "IDX_PASSWORD", columnList = "password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
@@ -59,4 +59,108 @@ public class User extends Auditable {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private User_profile userProfile; //perfil do user : onetoone com userprofile
+
+    public UUID getId() {
+        return id;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getAdress_number() {
+        return adress_number;
+    }
+
+    public void setAdress_number(String adress_number) {
+        this.adress_number = adress_number;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public User_profile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(User_profile userProfile) {
+        this.userProfile = userProfile;
+    }
+}

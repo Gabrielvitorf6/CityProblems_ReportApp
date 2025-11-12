@@ -29,4 +29,29 @@ public class User_Points extends Auditable {
     private int points; //Total de pontos do usuário
 
     //Entidade para mapear os pontos dos usuários
+
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public User_profile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(User_profile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
 }
