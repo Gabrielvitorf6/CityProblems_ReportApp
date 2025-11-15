@@ -49,10 +49,8 @@ public class PointOfReport extends Auditable {
     @Column(nullable = false, length = 25)
     private String country;
 
-    @Column
-    private Double latitude;
+     private Double latitude;
 
-    @Column
     private Double longitude;
 
     @OneToOne
@@ -62,6 +60,7 @@ public class PointOfReport extends Auditable {
     @OneToOne
     private PointOfReport_Tag pointOfReportTag;     //Lista de tags do ponto de report: OneToOne
 
+    //Getters and setters
     public UUID getId() {
         return id;
     }

@@ -23,6 +23,50 @@ public class Vote extends Auditable {
         downvote(-1);
 */
 
+    @ManyToOne
+    private Post post;
+
+    @ManyToOne
+    private Comment comment;
+
+    @ManyToOne
+    private User_profile user_profile;
+
+    @ManyToOne
+    private Vote vote;
+
+    public User_profile getUser_profile() {
+        return user_profile;
+    }
+
+    public void setUser_profile(User_profile user_profile) {
+        this.user_profile = user_profile;
+    }
+
+    public Vote getVote() {
+        return vote;
+    }
+
+    public void setVote(Vote vote) {
+        this.vote = vote;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
+
     public UUID getId() {
         return id;
     }

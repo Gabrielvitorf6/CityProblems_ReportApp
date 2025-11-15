@@ -1,13 +1,12 @@
 package com.unipaulistana.CityProblemsReportApp.service;
 
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.repositores.UserRepository;
+import com.unipaulistana.CityProblemsReportApp.repositores.UserRepository;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -39,5 +38,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByCPF(String CPF) {
         return null;
+    }
+
+    public void deleteById(UUID id) {
+        this.repository.deleteUserById(id);
     }
 }

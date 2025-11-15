@@ -3,6 +3,7 @@ package com.unipaulistana.CityProblemsReportApp.domainmodel;
 import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -27,6 +28,17 @@ public class Comment  extends Auditable {
 
     @ManyToOne
     private Post post;
+
+    @OneToMany
+    private List<Vote> votes;
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
 
     public UUID getId() {
         return id;

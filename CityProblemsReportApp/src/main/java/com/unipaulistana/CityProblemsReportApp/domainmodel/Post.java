@@ -33,9 +33,6 @@ public class Post extends Auditable {
     @Column
     private int downVotes;
 
-    @Column(length = 500)
-    private String comment;
-
     @OneToMany(mappedBy = "post", fetch = FetchType.LAZY)
     private List<Decoration> decorations; //Condecorações do post: OneToMany com decorations
 
@@ -47,6 +44,9 @@ public class Post extends Auditable {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
+
+    @OneToMany
+    private List<Vote> votes;
 
     public UUID getId() {
         return id;
@@ -79,15 +79,6 @@ public class Post extends Auditable {
     public void setDownVotes(int downVotes) {
         this.downVotes = downVotes;
     }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public List<Decoration> getDecorations() {
         return decorations;
     }

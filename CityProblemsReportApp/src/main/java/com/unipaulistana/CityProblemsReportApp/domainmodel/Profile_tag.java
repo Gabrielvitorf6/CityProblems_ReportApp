@@ -1,5 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.UUID;
 @Entity
 @Table( indexes = {@Index(name = "IDX_TITLE", columnList = "title")
 })
-public class Profile_tag {
+public class Profile_tag extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)

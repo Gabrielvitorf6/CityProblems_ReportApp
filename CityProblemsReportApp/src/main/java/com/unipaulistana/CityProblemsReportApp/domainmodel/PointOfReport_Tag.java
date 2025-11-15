@@ -27,10 +27,7 @@ public class PointOfReport_Tag extends Auditable {
     private String description;
 
     @OneToOne
-    private User user; //Tags do PointOfReport : ManyToOne
-
-    @OneToOne
-    private PointOfReport_Tag pointOfReportTag;
+    private PointOfReport pointOfReport;
 
     public UUID getID() {
         return ID;
@@ -55,20 +52,11 @@ public class PointOfReport_Tag extends Auditable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public User getUser() {
-        return user;
+    public PointOfReport getPointOfReport() {
+        return pointOfReport;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public PointOfReport_Tag getPointOfReportTag() {
-        return pointOfReportTag;
-    }
-
-    public void setPointOfReportTag(PointOfReport_Tag pointOfReportTag) {
-        this.pointOfReportTag = pointOfReportTag;
+    public void setPointOfReport(PointOfReport pointOfReport) {
+        this.pointOfReport = pointOfReport;
     }
 }

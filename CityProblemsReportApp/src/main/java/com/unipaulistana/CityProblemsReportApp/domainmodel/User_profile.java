@@ -1,5 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.domainmodel;
 
+import com.unipaulistana.CityProblemsReportApp.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.UUID;
 @Entity
 @Table( indexes = {@Index(name = "IDX_NICKNAME", columnList = "nickname")
 })
-public class User_profile {
+public class User_profile extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -34,7 +35,7 @@ public class User_profile {
     private int Totalupvotes; //joincolumn de post
 
     @OneToMany(mappedBy = "userProfile",  fetch = FetchType.EAGER)
-    private Set<Profile_tag> userTag; //tags do perfil : OnetoMany com Profile_tag
+    private Set<Profile_tag> profileTags; //tags do perfil : OnetoMany com Profile_tag
 
     @OneToMany(mappedBy = "userProfile",   fetch = FetchType.EAGER)
     private List<Decoration> decorationsList; //lista de condecorações : OneToMany (Essa em específico puxa o total de condecorções da conta)
@@ -53,6 +54,16 @@ public class User_profile {
     private List<Comment> comments;
     //Coluna com seguidores e seguindo tem que ser implementada, falar com o professor
 
+    @OneToMany
+    private List<Vote> votes;
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
 
     public UUID getId() {
         return id;
@@ -94,12 +105,12 @@ public class User_profile {
         Totalupvotes = totalupvotes;
     }
 
-    public Set<Profile_tag> getUserTag() {
-        return userTag;
+    public Set<Profile_tag> getProfileTags() {
+        return profileTags;
     }
 
-    public void setUserTag(Set<Profile_tag> userTag) {
-        this.userTag = userTag;
+    public void setProfileTags(Set<Profile_tag> profileTags) {
+        this.profileTags = profileTags;
     }
 
     public List<Decoration> getDecorationsList() {

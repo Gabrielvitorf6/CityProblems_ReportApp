@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.Date;
 import java.util.UUID;
 
 @NoArgsConstructor
@@ -29,6 +30,9 @@ public class User extends Auditable {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false,  updatable = false, length = 8, precision = 8)
+    private Date birthdate;
 
     @Column(nullable = false, unique = true)
     private String email;

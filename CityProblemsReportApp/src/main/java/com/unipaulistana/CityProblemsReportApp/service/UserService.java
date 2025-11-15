@@ -3,7 +3,6 @@ package com.unipaulistana.CityProblemsReportApp.service;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface UserService {
@@ -17,4 +16,6 @@ public interface UserService {
     User findByEmail(String email);
 
     User findByCPF(String CPF);
+
+    void deleteById(UUID id);
 }
