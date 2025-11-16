@@ -18,4 +18,10 @@ public interface UserService {
     User findByCPF(String CPF);
 
     void deleteById(UUID id);
+
+    User create(User user);
+
+    User update(User user);
+
+    User partialUpdate(User user);
 }
