@@ -3,6 +3,8 @@ package com.unipaulistana.CityProblemsReportApp.controller;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
 import com.unipaulistana.CityProblemsReportApp.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +13,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/users")
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 
 public class UserController {
     private final UserService userService;
+
+    public UserController(UserService userService) { this.userService = userService; }
 
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
@@ -27,9 +31,41 @@ public class UserController {
 
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUserbyId(@PathVariable UUID id){
+    public ResponseEntity<Void> deleteUserById(@PathVariable UUID id){
         this.userService.deleteById(id);
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/by-username")
+    public ResponseEntity<User> findByUsername(@RequestParam String username) {
+        return ResponseEntity.ok(this.userService.findByUsername(username));
+    }
+
+    @GetMapping("/by-email")
+    public ResponseEntity<User> findByEmail(@RequestParam String email) {
+        return ResponseEntity.ok(this.userService.findByEmail(email));
+    }
+
+    @GetMapping("/by-cpf")
+    public ResponseEntity<User> findByCPF(@RequestParam String CPF) {
+        return ResponseEntity.ok(this.userService.findByCPF(CPF));
+    }
+
+    @PostMapping
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        return new ResponseEntity<>(this.userService.create(user), HttpStatus.CREATED);
+    }
+
+    @PutMapping
+    public ResponseEntity<User> updateUser(@RequestBody User user){
+        return new ResponseEntity<>(this.userService.update(user), HttpStatus.CREATED);
+    }
+
+    @PatchMapping
+    public ResponseEntity<User> patchUser(@RequestBody User user){
+        return new ResponseEntity<>(this.userService.partialUpdate(user), HttpStatus.CREATED);
+    }
+
+
 }
 
