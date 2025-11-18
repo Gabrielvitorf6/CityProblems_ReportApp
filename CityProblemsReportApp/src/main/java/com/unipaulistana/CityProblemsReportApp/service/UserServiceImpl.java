@@ -43,4 +43,19 @@ public class UserServiceImpl implements UserService {
     public void deleteById(UUID id) {
         this.repository.deleteUserById(id);
     }
+
+    @Override
+    public User create(User user) {
+        return null;
+    }
+
+    @Override
+    public User update(User user) {
+        return null;
+    }
+
+    @Override
+    public User partialUpdate(User user) {
+        return null;
+    }
 }

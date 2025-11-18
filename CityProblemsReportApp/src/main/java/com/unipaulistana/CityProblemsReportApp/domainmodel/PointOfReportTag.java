@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @Entity
 @Table
-public class PointOfReport_Tag extends Auditable {
+public class PointOfReportTag extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, updatable = false)
