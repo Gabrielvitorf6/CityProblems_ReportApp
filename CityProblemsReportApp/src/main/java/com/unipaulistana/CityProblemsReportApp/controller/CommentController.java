@@ -18,14 +18,16 @@ import java.util.UUID;
 public class CommentController {
     private final CommentService commentService;
 
-
-
     public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
+@GetMapping
+public ResponseEntity<List<Comment>> findAll(Post post){
+        return ResponseEntity.ok((this.commentService.getAllComments()));
+}
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Comment>> findById (@PathVariable UUID id){
+    public ResponseEntity<Optional<Comment>> findCommentById(@PathVariable UUID id){
         return ResponseEntity.ok(this.commentService.findById(id));
     }
     @GetMapping("/{string}")
@@ -44,7 +46,10 @@ public class CommentController {
 public ResponseEntity<List<Comment>> findCommentsByCreatedDateAfter(@PathVariable Instant instant){
         return ResponseEntity.ok(this.commentService.getCommentsByCreatedDateAfter(instant));
     }
-
+    @GetMapping("/{instant}")
+public ResponseEntity<List<Comment>> findCommentsByCreatedDateBefore(@PathVariable Instant instant){
+        return ResponseEntity.ok(this.commentService.getCommentsByCreatedDateBefore(instant));
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Optional<Comment>> deleteById (@PathVariable UUID id){
         this.commentService.deleteById(id);
@@ -60,4 +65,5 @@ public ResponseEntity<List<Comment>> findCommentsByCreatedDateAfter(@PathVariabl
     public ResponseEntity<Comment> createComment (@RequestBody Comment comment){
         return new ResponseEntity<>(this.commentService.createComment(comment), HttpStatus.CREATED);
     }
+
 }

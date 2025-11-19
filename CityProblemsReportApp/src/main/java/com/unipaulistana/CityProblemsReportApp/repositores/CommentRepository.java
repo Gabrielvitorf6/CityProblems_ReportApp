@@ -18,8 +18,6 @@ public interface CommentRepository extends JpaRepository<Comment, UUID> {
 
     List<Comment> findAllByPost(Post post);
 
-    List<Comment> findCommentsByVotesGreaterThan(List<Vote> votesIsGreaterThan);
-
     List<Comment> findCommentsByCreatedDateAfter(Instant createdDateAfter);
 
     List<Comment> findCommentsByCreatedDateBefore(Instant createdDateBefore);

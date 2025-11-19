@@ -42,11 +42,6 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getCommentsByVotesGreaterThan(List<Vote> votesIsGreaterThan) {
-        return commentRepository.findCommentsByVotesGreaterThan(votesIsGreaterThan);
-    }
-
-    @Override
     public List<Comment> getCommentsByCreatedDateAfter(Instant createdDateAfter) {
         return commentRepository.findCommentsByCreatedDateAfter(createdDateAfter);
     }

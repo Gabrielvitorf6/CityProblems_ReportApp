@@ -20,8 +20,6 @@ public interface CommentService {
 
     List<Comment> getAllByPost(Post post);
 
-    List<Comment> getCommentsByVotesGreaterThan(List<Vote> votesIsGreaterThan);
-
     List<Comment> getCommentsByCreatedDateAfter(Instant createdDateAfter);
 
     List<Comment> getCommentsByCreatedDateBefore(Instant createdDateBefore);
