@@ -6,6 +6,7 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.User_profile;
 import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,15 +21,11 @@ public interface DecorationRepository extends JpaRepository<Decoration, UUID> {
 
     List<Decoration> findDecorationsByValuePointsGreaterThan(int valuePointsIsGreaterThan);
 
-    List<Decoration> findDecorationsByPost(Post post);
+    List<Decoration> findDecorationsByPost_Id(UUID postId);
 
-    List<Decoration> findDecorationsByUserProfile(User_profile userProfile);
+    Optional<Decoration> findDecorationsByUserProfile_Id(UUID userProfileId);
 
     Optional<Decoration> findById(UUID id);
-
-    List<Decoration> findAll();
-
-    Decoration save(Decoration decoration);
 
     void deleteById(UUID id);
 }

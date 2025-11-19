@@ -20,7 +20,7 @@ public class DecorationServiceImpl implements DecorationService {
 
     @Override
     public Optional<Decoration> getDecorationById(UUID id) {
-        return decorationRepository.findById(id);
+        return decorationRepository.findDecorationById(id);
     }
 
     @Override
@@ -29,12 +29,37 @@ public class DecorationServiceImpl implements DecorationService {
     }
 
     @Override
-    public Decoration saveDecoration(Decoration decoration) {
+    public Decoration create(Decoration decoration) {
         return decorationRepository.save(decoration);
     }
 
     @Override
-    public void deleteDecoration(UUID id) {
+    public void deleteById(UUID id) {
         decorationRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Decoration> getDecorationsByTitleLike(String title) {
+        return this.decorationRepository.findByTitleLike(title);
+    }
+
+    @Override
+    public List<Decoration> getDecorationsByDescrptionsLike(String description) {
+        return this.decorationRepository.findByDescriptionLike(description);
+    }
+
+    @Override
+    public List<Decoration> getDecorationsWithPointsGreaterThan(int valuePointsIsGreaterThan) {
+        return this.decorationRepository.findDecorationsByValuePointsGreaterThan(valuePointsIsGreaterThan);
+    }
+
+    @Override
+    public List<Decoration> getDecorationsByPostId(UUID id) {
+        return this.decorationRepository.findDecorationsByPost_Id(id);
+    }
+
+    @Override
+    public Optional<Decoration> getDecorationsByUSerProfile_Id(UUID userprofileID) {
+        return this.decorationRepository.findDecorationsByUserProfile_Id(userprofileID);
     }
 }

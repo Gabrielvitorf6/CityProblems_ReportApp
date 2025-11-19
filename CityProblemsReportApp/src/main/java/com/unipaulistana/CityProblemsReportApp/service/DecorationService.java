@@ -9,6 +9,16 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.Decoration;
 public interface DecorationService {
     Optional<Decoration> getDecorationById(UUID id);
     List<Decoration> getAllDecorations();
-    Decoration saveDecoration(Decoration decoration);
-    void deleteDecoration(UUID id);
+    Decoration create(Decoration decoration);
+    void deleteById(UUID id);
+
+    List<Decoration> getDecorationsByTitleLike(String title);
+
+    List<Decoration> getDecorationsByDescrptionsLike(String description);
+
+    List<Decoration> getDecorationsWithPointsGreaterThan(int valuePointsIsGreaterThan);
+
+    List<Decoration> getDecorationsByPostId(UUID id);
+
+    Optional<Decoration> getDecorationsByUSerProfile_Id(UUID userprofileID);
 }

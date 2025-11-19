@@ -1,6 +1,9 @@
 package com.unipaulistana.CityProblemsReportApp.controller;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Post;
+import com.unipaulistana.CityProblemsReportApp.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,12 +13,13 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping
+@RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
 
     @GetMapping
     public ResponseEntity<Optional<Post>> findById (@PathVariable UUID id){
-        return ResponseEntity.ok(this.PostService.findById(id));
+        return ResponseEntity.ok(this.postService.findById(id));
     }
 
     @DeleteMapping
