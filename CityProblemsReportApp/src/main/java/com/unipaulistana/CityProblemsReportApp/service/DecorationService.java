@@ -1,16 +1,14 @@
+
 package com.unipaulistana.CityProblemsReportApp.service;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.Decoration;
-import java.util.List;
 import java.util.Optional;
+import java.util.List;
 import java.util.UUID;
-
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Decoration;
 
 public interface DecorationService {
-
-    List<Decoration> finById(UUID id);
-
-    Optional<Decoration> update(Decoration decoration);
-
-    Decoration create(Decoration decoration);
+    Optional<Decoration> getDecorationById(UUID id);
+    List<Decoration> getAllDecorations();
+    Decoration saveDecoration(Decoration decoration);
+    void deleteDecoration(UUID id);
 }

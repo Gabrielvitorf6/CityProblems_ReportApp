@@ -17,4 +17,12 @@ public interface PointOfReportTagRepository extends JpaRepository<PointOfReportT
     List<PointOfReportTag> findByDescriptionLike(String description);
 
     List<PointOfReportTag> findPointOfReport_TagsByPointOfReport(PointOfReport pointOfReport);
+
+    Optional<PointOfReportTag> findById(UUID id);
+
+    List<PointOfReportTag> findAll();
+
+    PointOfReportTag save(PointOfReportTag tag);
+
+    void deleteById(UUID id);
 }

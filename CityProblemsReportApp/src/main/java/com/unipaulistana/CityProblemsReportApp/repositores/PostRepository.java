@@ -21,4 +21,12 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
     List<Post> findPostsByCreatedDateAfter(Instant createdDate);
 
     List<Post> findPostsByCreatedDateBefore(Instant createdDateBefore);
+
+    Optional<Post> findById(UUID id);
+
+    List<Post> findAll();
+
+    Post save(Post post);
+
+    void deleteById(UUID id);
 }

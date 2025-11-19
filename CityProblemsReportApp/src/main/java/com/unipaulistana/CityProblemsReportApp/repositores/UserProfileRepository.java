@@ -31,4 +31,11 @@ public interface UserProfileRepository extends JpaRepository<User_profile, UUID>
 
     List<User_profile> findUser_profileByCreatedDateIsAfter(Instant createdDateAfter);
 
+    Optional<User_profile> findById(UUID id);
+
+    List<User_profile> findAll();
+
+    User_profile save(User_profile profile);
+
+    void deleteById(UUID id);
 }

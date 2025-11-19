@@ -23,4 +23,12 @@ public interface DecorationRepository extends JpaRepository<Decoration, UUID> {
     List<Decoration> findDecorationsByPost(Post post);
 
     List<Decoration> findDecorationsByUserProfile(User_profile userProfile);
+
+    Optional<Decoration> findById(UUID id);
+
+    List<Decoration> findAll();
+
+    Decoration save(Decoration decoration);
+
+    void deleteById(UUID id);
 }
