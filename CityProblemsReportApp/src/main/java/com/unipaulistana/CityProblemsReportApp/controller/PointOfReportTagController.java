@@ -36,7 +36,7 @@ public class PointOfReportTagController {
     }
 
     @PostMapping
-    public ResponseEntity<PointOfReportTag> createPointOfReporteTag (@RequestBody Comment comment){
+    public ResponseEntity<PointOfReportTag> createPointOfReportTag (@RequestBody Comment comment){
         return new ResponseEntity<>(this.pointOfReportTagService.create(comment), HttpStatus.CREATED);
     }
 }

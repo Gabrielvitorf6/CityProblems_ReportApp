@@ -37,4 +37,24 @@ public class PointOfReportServiceImpl implements PointOfReportService {
     public void deletePoint(UUID id) {
         pointRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<PointOfReport> findById(UUID id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+
+    }
+
+    @Override
+    public Optional<PointOfReport> update(PointOfReport pointOfReport) {
+        return Optional.empty();
+    }
+
+    @Override
+    public PointOfReport create(PointOfReport pointOfReport) {
+        return null;
+    }
 }

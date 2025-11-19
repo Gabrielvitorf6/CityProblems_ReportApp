@@ -2,7 +2,7 @@ package com.unipaulistana.CityProblemsReportApp.controller;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
 import com.unipaulistana.CityProblemsReportApp.service.UserService;
-import lombok.RequiredArgsConstructor;
+//import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;

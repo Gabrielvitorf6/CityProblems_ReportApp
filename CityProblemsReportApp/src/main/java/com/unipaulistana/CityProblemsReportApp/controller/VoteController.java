@@ -2,6 +2,7 @@ package com.unipaulistana.CityProblemsReportApp.controller;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Vote;
+import com.unipaulistana.CityProblemsReportApp.service.VoteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,10 @@ import java.util.UUID;
 @RequestMapping
 public class VoteController {
     private final VoteService voteService;
+
+    public VoteController(VoteService voteService) {
+        this.voteService = voteService;
+    }
 
     @GetMapping
     public ResponseEntity<Optional<Vote>> findById (@PathVariable UUID id){

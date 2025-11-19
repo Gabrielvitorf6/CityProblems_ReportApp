@@ -37,4 +37,24 @@ public class ProfileTagServiceImpl implements ProfileTagService {
     public void deleteTag(UUID id) {
         profileTagRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Profile_tag> findById(UUID id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+
+    }
+
+    @Override
+    public Optional<Profile_tag> update(Profile_tag profileTag) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Profile_tag create(Profile_tag profileTag) {
+        return null;
+    }
 }

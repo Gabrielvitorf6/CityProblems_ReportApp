@@ -10,4 +10,12 @@ public interface ProfileTagService {
     List<Profile_tag> getAllTags();
     Profile_tag saveTag(Profile_tag tag);
     void deleteTag(UUID id);
+
+    Optional<Profile_tag> findById(UUID id);
+
+    void deleteById(UUID id);
+
+    Optional<Profile_tag> update(Profile_tag profileTag);
+
+    Profile_tag create(Profile_tag profileTag);
 }

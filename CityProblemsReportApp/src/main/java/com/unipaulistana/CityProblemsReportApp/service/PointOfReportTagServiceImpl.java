@@ -1,5 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.service;
 
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReportTag;
 import com.unipaulistana.CityProblemsReportApp.repositores.PointOfReportTagRepository;
 import org.springframework.stereotype.Service;
@@ -35,5 +36,25 @@ public class PointOfReportTagServiceImpl implements PointOfReportTagService {
     @Override
     public void deleteTag(UUID id) {
         tagRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<PointOfReportTagService> findById(UUID id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+
+    }
+
+    @Override
+    public Optional<PointOfReportTag> update(Comment comment) {
+        return Optional.empty();
+    }
+
+    @Override
+    public PointOfReportTag create(Comment comment) {
+        return null;
     }
 }

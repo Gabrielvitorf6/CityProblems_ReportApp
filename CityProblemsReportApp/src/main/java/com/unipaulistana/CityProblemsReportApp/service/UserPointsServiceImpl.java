@@ -1,7 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.service;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User_Points;
-import com.unipaulistana.CityProblemsReportApp.domainmodel.User_Points;
 import com.unipaulistana.CityProblemsReportApp.repositores.UserPointsRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,7 @@ public class UserPointsServiceImpl implements UserPointsService {
     }
 
     @Override
-    public List<User_Points> getAllPoints() {
+    public List<UserPointsService> getAllPoints() {
         return userPointsRepository.findAll();
     }
 
@@ -36,5 +35,25 @@ public class UserPointsServiceImpl implements UserPointsService {
     @Override
     public void deletePoints(UUID id) {
         userPointsRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<User_Points> findById(UUID id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+
+    }
+
+    @Override
+    public Optional<User_Points> update(User_Points userPoints) {
+        return Optional.empty();
+    }
+
+    @Override
+    public User_Points create(User_Points userPoints) {
+        return null;
     }
 }

@@ -11,4 +11,12 @@ public interface PointOfReportService {
     List<PointOfReport> getAllPoints();
     PointOfReport savePoint(PointOfReport point);
     void deletePoint(UUID id);
+
+    Optional<PointOfReport> findById(UUID id);
+
+    void deleteById(UUID id);
+
+    Optional<PointOfReport> update(PointOfReport pointOfReport);
+
+    PointOfReport create(PointOfReport pointOfReport);
 }

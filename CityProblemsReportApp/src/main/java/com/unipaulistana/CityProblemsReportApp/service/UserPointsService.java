@@ -6,8 +6,16 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface UserPointsService {
-    Optional<com.unipaulistana.CityProblemsReportApp.service.UserPointsService> getPointsById(UUID id);
+    Optional<User_Points> getPointsById(UUID id);
     List<UserPointsService> getAllPoints();
     User_Points savePoints(User_Points points);
     void deletePoints(UUID id);
+
+    Optional<User_Points> findById(UUID id);
+
+    void deleteById(UUID id);
+
+    Optional<User_Points> update(User_Points userPoints);
+
+    User_Points create(User_Points userPoints);
 }
