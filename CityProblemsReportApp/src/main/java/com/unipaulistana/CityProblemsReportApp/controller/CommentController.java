@@ -2,16 +2,19 @@ package com.unipaulistana.CityProblemsReportApp.controller;
 
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Post;
 import com.unipaulistana.CityProblemsReportApp.service.CommentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/comments")
 public class CommentController {
     private final CommentService commentService;
 
@@ -21,24 +24,40 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Comment>> findById (@PathVariable UUID id){
         return ResponseEntity.ok(this.commentService.findById(id));
     }
+    @GetMapping("/{string}")
+    public ResponseEntity<List<Comment>> findCommentsLike(@PathVariable String string){
+        return ResponseEntity.ok(this.commentService.getCommentsByCommentContaining(string));
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Comment>> findCommentsByUserProfile(@PathVariable UUID id){
+        return ResponseEntity.ok(this.commentService.getCommentsByUserProfile(id));
+    }
+    @GetMapping("{post}")
+    public ResponseEntity<List<Comment>> findCommentsByPost(@PathVariable Post post){
+        return ResponseEntity.ok(this.commentService.getAllByPost(post));
+    }
+    @GetMapping("/{instant}")
+public ResponseEntity<List<Comment>> findCommentsByCreatedDateAfter(@PathVariable Instant instant){
+        return ResponseEntity.ok(this.commentService.getCommentsByCreatedDateAfter(instant));
+    }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Optional<Comment>> deleteById (@PathVariable UUID id){
         this.commentService.deleteById(id);
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Optional<Comment>> updateById (@RequestBody Comment comment){
-        return new ResponseEntity<>(this.commentService.update(comment), HttpStatus.CREATED);
+    @PutMapping()
+    public ResponseEntity<Comment> update(@RequestBody Comment comment){
+        return new ResponseEntity<>(this.commentService.createComment(comment), HttpStatus.CREATED);
     }
 
     @PostMapping
     public ResponseEntity<Comment> createComment (@RequestBody Comment comment){
-        return new ResponseEntity<>(this.commentService.create(comment), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.commentService.createComment(comment), HttpStatus.CREATED);
     }
 }

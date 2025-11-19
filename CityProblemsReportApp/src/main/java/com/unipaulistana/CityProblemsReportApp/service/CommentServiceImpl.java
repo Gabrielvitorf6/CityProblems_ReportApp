@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Optional<Comment> getCommentById(UUID id) {
+    public Optional<Comment> findById(UUID id) {
         return commentRepository.findCommentById(id);
     }
 
@@ -32,8 +32,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> getCommentsByUserProfile(User_profile userProfile) {
-        return commentRepository.findCommentsByUserProfile(userProfile);
+    public List<Comment> getCommentsByUserProfile(UUID id) {
+        return commentRepository.findCommentsByUserProfile_Id(id);
     }
 
     @Override
@@ -62,13 +62,13 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment saveComment(Comment comment) {
+    public Comment createComment(Comment comment) {
         return commentRepository.save(comment);
     }
 
     @Override
-    public void deleteComment(UUID id) {
-        commentRepository.deleteById(id);
+    public void deleteById(UUID id) {
+        this.commentRepository.deleteById(id);
     }
 
     @Override

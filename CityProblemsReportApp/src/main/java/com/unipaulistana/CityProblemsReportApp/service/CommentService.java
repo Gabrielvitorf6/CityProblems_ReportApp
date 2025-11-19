@@ -12,11 +12,11 @@ import java.util.UUID;
 
 public interface CommentService {
 
-    Optional<Comment> getCommentById(UUID id);
+    Optional<Comment> findById(UUID id);
 
     List<Comment> getCommentsByCommentContaining(String comment);
 
-    List<Comment> getCommentsByUserProfile(User_profile userProfile);
+    List<Comment> getCommentsByUserProfile(UUID id);
 
     List<Comment> getAllByPost(Post post);
 
@@ -28,9 +28,9 @@ public interface CommentService {
 
     List<Comment> getAllByUserProfile(User_profile userProfile);
 
-    Comment saveComment(Comment comment);
+    Comment createComment(Comment comment);
 
-    void deleteComment(UUID id);
+    void deleteById(UUID id);
 
     List<Comment> getAllComments();
 
