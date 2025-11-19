@@ -58,7 +58,7 @@ public class PointOfReport extends Auditable {
     private Post post; //Perfil que criou o POR: OneToOne
 
     @OneToOne
-    private PointOfReport_Tag pointOfReportTag;     //Lista de tags do ponto de report: OneToOne
+    private PointOfReportTag pointOfReportTag;     //Lista de tags do ponto de report: OneToOne
 
     //Getters and setters
     public UUID getId() {
@@ -157,11 +157,11 @@ public class PointOfReport extends Auditable {
         this.post = post;
     }
 
-    public PointOfReport_Tag getPointOfReportTag() {
+    public PointOfReportTag getPointOfReportTag() {
         return pointOfReportTag;
     }
 
-    public void setPointOfReportTag(PointOfReport_Tag pointOfReportTag) {
+    public void setPointOfReportTag(PointOfReportTag pointOfReportTag) {
         this.pointOfReportTag = pointOfReportTag;
     }
 }

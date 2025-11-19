@@ -25,4 +25,10 @@ public interface CommentRepository extends JpaRepository<Comment, UUID> {
     List<Comment> findCommentsByCreatedDateBefore(Instant createdDateBefore);
 
     List<Comment> findAllByUserProfile(User_profile userProfile);
+
+    Comment save(Comment comment);
+
+    void deleteById(UUID id);
+
+    List<Comment> findAll();
 }

@@ -1,7 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.service;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReportTag;
-import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReport_Tag;
 import com.unipaulistana.CityProblemsReportApp.repositores.PointOfReportTagRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,26 +9,26 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class PointTagServiceImpl implements PointTagService {
+public class PointOfReportTagServiceImpl implements PointOfReportTagService {
 
     private final PointOfReportTagRepository tagRepository;
 
-    public PointTagServiceImpl(PointOfReportTagRepository tagRepository) {
+    public PointOfReportTagServiceImpl(PointOfReportTagRepository tagRepository) {
         this.tagRepository = tagRepository;
     }
 
     @Override
-    public Optional<PointOfReport_Tag> getTagById(UUID id) {
+    public Optional<PointOfReportTag> getTagById(UUID id) {
         return tagRepository.findById(id);
     }
 
     @Override
-    public List<PointOfReport_Tag> getAllTags() {
+    public List<PointOfReportTag> getAllTags() {
         return tagRepository.findAll();
     }
 
     @Override
-    public PointOfReport_Tag saveTag(PointOfReport_Tag tag) {
+    public PointOfReportTag saveTag(PointOfReportTag tag) {
         return tagRepository.save(tag);
     }
 

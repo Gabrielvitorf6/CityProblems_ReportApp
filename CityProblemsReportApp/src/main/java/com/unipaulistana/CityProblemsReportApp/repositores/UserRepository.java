@@ -10,6 +10,7 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import com.querydsl.core.types.OrderSpecifier;
 import org.springframework.stereotype.Repository;
 
+import java.lang.ScopedValue;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -54,4 +55,8 @@ public interface UserRepository extends
     List<User> findUsersByCreatedDateIsAfter(Instant createdDateAfter);
 
     void deleteUserById(UUID id);
+
+    List<User> findAll();
+
+    ScopedValue<Object> findById(UUID id);
 }

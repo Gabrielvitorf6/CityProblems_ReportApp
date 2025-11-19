@@ -1,7 +1,7 @@
 package com.unipaulistana.CityProblemsReportApp.repositores;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReport;
-import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReport_Tag;
+import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReportTag;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -35,5 +35,13 @@ public interface PointOfReportRepository extends JpaRepository<PointOfReport, UU
 
     List<PointOfReport> findPointOfReportByPost(Post post);
 
-    List<PointOfReport> findPointOfReportsByPointOfReportTag(PointOfReport_Tag pointOfReportTag);
+    List<PointOfReport> findPointOfReportsByPointOfReportTag(PointOfReportTag pointOfReportTag);
+
+    Optional<PointOfReport> findById(UUID id);
+
+    List<PointOfReport> findAll();
+
+    PointOfReport save(PointOfReport point);
+
+    void deleteById(UUID id);
 }
