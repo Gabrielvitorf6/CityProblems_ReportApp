@@ -20,7 +20,7 @@ public class UserPointsServiceImpl implements UserPointsService {
 
     @Override
     public Optional<User_Points> getPointsById(UUID id) {
-        return userPointsRepository.findById(id);
+        return userPointsRepository.findUser_PointsById(id);
     }
 
     @Override
