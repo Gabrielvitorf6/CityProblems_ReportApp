@@ -4,6 +4,7 @@ import com.unipaulistana.CityProblemsReportApp.domainmodel.Post;
 import com.unipaulistana.CityProblemsReportApp.repositores.PostRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -16,44 +17,43 @@ public class PostServiceImpl implements PostService {
     public PostServiceImpl(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
-
     @Override
     public Optional<Post> getPostById(UUID id) {
-        return postRepository.findById(id);
+        return postRepository.findPostById(id);
     }
-
     @Override
     public List<Post> getAllPosts() {
-        return postRepository.findAll();
-    }
-
-    @Override
-    public Post savePost(Post post) {
-        return postRepository.save(post);
-    }
-
-    @Override
-    public void deletePost(UUID id) {
-        postRepository.deleteById(id);
-    }
-
-    @Override
-    public Optional<Post> findById(UUID id) {
-        return Optional.empty();
+        return this.postRepository.findAll();
     }
 
     @Override
     public void deleteById(UUID id) {
-
+        this.postRepository.deleteById(id);
     }
-
-    @Override
-    public Optional<Post> update(Post post) {
-        return Optional.empty();
-    }
-
     @Override
     public Post create(Post post) {
-        return null;
+        return this.postRepository.save(post);
+    }
+    @Override
+    public List<Post> findByTitleLike(String title) {
+        return this.postRepository.findPostsByTitleLike(title);
+    }
+    @Override
+    public List<Post> findByUserProfileId(UUID id) {
+        return this.postRepository.findAllByUserProfile_Id(id);
+    }
+
+    @Override
+    public Optional<Post> findByPointOfReportId(UUID pointOfReportId) {
+        return this.postRepository.findPostByPointOfReport_Id(pointOfReportId);
+    }
+
+    @Override
+    public List<Post> findByCreationDateAfter(Instant createdDate) {
+        return this.postRepository.findPostsByCreatedDateAfter(createdDate);
+    }
+    @Override
+    public List<Post> findByCreationDateBefore(Instant createdDate) {
+        return this.postRepository.findPostsByCreatedDateBefore(createdDate);
     }
 }

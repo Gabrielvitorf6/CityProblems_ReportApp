@@ -1,6 +1,7 @@
 package com.unipaulistana.CityProblemsReportApp.repositores;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.*;
+import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.Instant;
@@ -14,19 +15,13 @@ public interface PostRepository extends JpaRepository<Post, UUID> {
 
     List<Post> findPostsByTitleLike(String title);
 
-    List<Post> findAllByUserProfile(User_profile userProfile);
+    List<Post> findAllByUserProfile_Id(UUID userProfileId);
 
-    Optional<Post> findPostByPointOfReport(PointOfReport pointOfReport);
+    Optional<Post> findPostByPointOfReport_Id(UUID pointOfReportId);
 
     List<Post> findPostsByCreatedDateAfter(Instant createdDate);
 
     List<Post> findPostsByCreatedDateBefore(Instant createdDateBefore);
-
-    Optional<Post> findById(UUID id);
-
-    List<Post> findAll();
-
-    Post save(Post post);
 
     void deleteById(UUID id);
 }

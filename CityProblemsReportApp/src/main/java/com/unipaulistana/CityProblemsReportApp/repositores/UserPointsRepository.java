@@ -15,10 +15,6 @@ public interface UserPointsRepository extends JpaRepository<User_Points, UUID> {
 
     Optional<User_Points> findUser_PointsById(UUID id);
 
-    default List<UserPointsService> findAll() {
-        return null;
-    }
-
     User_Points save(User_Points points);
 
     void deleteById(UUID id);
