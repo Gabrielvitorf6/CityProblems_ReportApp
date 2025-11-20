@@ -1,8 +1,6 @@
 package com.unipaulistana.CityProblemsReportApp.repositores;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReport;
-import com.unipaulistana.CityProblemsReportApp.domainmodel.PointOfReportTag;
-import com.unipaulistana.CityProblemsReportApp.domainmodel.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -19,13 +17,13 @@ public interface PointOfReportRepository extends JpaRepository<PointOfReport, UU
 
     List<PointOfReport> findPointOfReportsByCEP(String cep);
 
-    List<PointOfReport> findPointOfReportsByAdress(String adress);
+    List<PointOfReport> findPointOfReportsByAdressLike(String adress);
 
     //findporbyadressandadressnumber criar query
 
     List<PointOfReport> findByCity(String city);
 
-    List<PointOfReport> findBystate(String state);
+    List<PointOfReport> findPointOfReportsByState(String state);
             
     List<PointOfReport> findByCountry(String country);
 
@@ -33,15 +31,9 @@ public interface PointOfReportRepository extends JpaRepository<PointOfReport, UU
 
     List<PointOfReport> findByLatitudeAndLongitude(Double latitude, Double longitude);
 
-    List<PointOfReport> findPointOfReportByPost(Post post);
+    List<PointOfReport> findPointOfReportByPost_Id(UUID postId);
 
-    List<PointOfReport> findPointOfReportsByPointOfReportTag(PointOfReportTag pointOfReportTag);
+    List<PointOfReport> findPointOfReportsByPointOfReportTag_ID(UUID pointOfReportTagID);
 
-    Optional<PointOfReport> findById(UUID id);
-
-    List<PointOfReport> findAll();
-
-    PointOfReport save(PointOfReport point);
-
-    void deleteById(UUID id);
+    Void deletePointOfReportById(UUID id);
 }
