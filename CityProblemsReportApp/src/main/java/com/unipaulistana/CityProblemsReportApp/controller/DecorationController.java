@@ -27,32 +27,32 @@ public ResponseEntity<List<Decoration>> findAll(){
 }
 
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Decoration>> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.decorationService.getDecorationById(id));
     }
-    @GetMapping
+    @GetMapping("/{title}")
     public ResponseEntity<List<Decoration>> findByTitleLike(@PathVariable String title) {
         return ResponseEntity.ok(this.decorationService.getDecorationsByTitleLike(title));
     }
-    @GetMapping
+    @GetMapping("/{description}")
     public ResponseEntity<List<Decoration>> findByDescriptionLike(@PathVariable String description) {
         return ResponseEntity.ok(this.decorationService.getDecorationsByDescrptionsLike(description));
     }
-    @GetMapping
+    @GetMapping("/{valuePointsIsGreaterThan}")
     public ResponseEntity<List<Decoration>> findByValuePointsGreaterThan(@PathVariable int valuePointsIsGreaterThan) {
         return ResponseEntity.ok(this.decorationService.getDecorationsWithPointsGreaterThan(valuePointsIsGreaterThan));
     }
-    @GetMapping
+    @GetMapping("/post/{id}")
     public ResponseEntity<List<Decoration>> findDecorationsByPostId(@PathVariable UUID id){
         return ResponseEntity.ok(this.decorationService.getDecorationsByPostId(id));
     }
-    @GetMapping
+    @GetMapping("/userprofile/{userprofileID}")
     public ResponseEntity<Optional<Decoration>> findDecorationsByUserProfilel(@PathVariable UUID userprofileID){
         return ResponseEntity.ok(this.decorationService.getDecorationsByUSerProfile_Id(userprofileID));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<List<Decoration>> deleteById (@PathVariable UUID id){
         this.decorationService.deleteById(id);
         return ResponseEntity.notFound().build();
