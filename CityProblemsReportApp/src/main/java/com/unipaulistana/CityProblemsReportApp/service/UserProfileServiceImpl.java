@@ -33,27 +33,9 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public void deleteProfile(UUID id) {
-        userProfileRepository.deleteById(id);
-    }
+    public void deleteById(UUID id) { this.userProfileRepository.deleteById(id); }
 
     @Override
-    public Optional<User_profile> findById(UUID id) {
-        return Optional.empty();
-    }
+    public Optional<User_profile> update(User_profile user_Profile) { return Optional.ofNullable(this.userProfileRepository.save(user_Profile)); }
 
-    @Override
-    public void deleteById(UUID id) {
-
-    }
-
-    @Override
-    public Optional<User_profile> update(User_profile userProfile) {
-        return Optional.empty();
-    }
-
-    @Override
-    public User_profile create(User_profile userProfile) {
-        return null;
-    }
 }

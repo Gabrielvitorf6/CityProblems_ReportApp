@@ -19,24 +19,24 @@ public class User_profileController {
         this.userProfileService = userProfileService;
     }
 
-    @GetMapping
-    public ResponseEntity<Optional<User_profile>> findById (@PathVariable UUID id){
-        return ResponseEntity.ok(this.userProfileService.findById(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<User_profile>> getProfileById (@PathVariable UUID id){
+        return ResponseEntity.ok(this.userProfileService.getProfileById(id));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Optional<User_profile>> deleteById (@PathVariable UUID id){
         this.userProfileService.deleteById(id);
         return ResponseEntity.notFound().build();
     }
 
     @PutMapping
-    public ResponseEntity<Optional<User_profile>> updateById (@RequestBody User_profile user_profile){
+    public ResponseEntity<Optional<User_profile>> update (@RequestBody User_profile user_profile){
         return new ResponseEntity<>(this.userProfileService.update(user_profile), HttpStatus.CREATED);
     }
 
     @PostMapping
     public ResponseEntity<User_profile> createUser_profile (@RequestBody User_profile user_profile){
-        return new ResponseEntity<>(this.userProfileService.create(user_profile), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.userProfileService.saveProfile(user_profile), HttpStatus.CREATED);
     }
 }

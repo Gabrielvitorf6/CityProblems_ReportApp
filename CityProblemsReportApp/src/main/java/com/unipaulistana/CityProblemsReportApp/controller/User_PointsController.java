@@ -28,7 +28,7 @@ public class User_PointsController {
         return ResponseEntity.ok(this.userPointsService.getAllPoints());
     }
     @GetMapping("/userprofile/{id}")
-    public ResponseEntity<List<User_Points>> findAllByUserProfileid(@RequestParam UUID id){
+    public ResponseEntity<List<User_Points>> findAllByUserProfileId(@RequestParam UUID id){
         return ResponseEntity.ok(this.userPointsService.findAllByUserProfile(id));
     }
 

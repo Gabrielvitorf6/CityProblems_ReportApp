@@ -1,6 +1,5 @@
 package com.unipaulistana.CityProblemsReportApp.controller;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Vote;
 import com.unipaulistana.CityProblemsReportApp.service.VoteService;
 import org.springframework.http.HttpStatus;
@@ -19,24 +18,24 @@ public class VoteController {
         this.voteService = voteService;
     }
 
-    @GetMapping
-    public ResponseEntity<Optional<Vote>> findById (@PathVariable UUID id){
-        return ResponseEntity.ok(this.voteService.findById(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<Optional<Vote>> getVoteById (@PathVariable UUID id){
+        return ResponseEntity.ok(this.voteService.getVoteById(id));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Optional<Vote>> deleteById (@PathVariable UUID id){
-        this.voteService.deleteById(id);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Optional<Vote>> deleteVote (@PathVariable UUID id){
+        this.voteService.deleteVote(id);
         return ResponseEntity.notFound().build();
     }
 
     @PutMapping
-    public ResponseEntity<Optional<Vote>> updateById (@RequestBody Vote vote){
+    public ResponseEntity<Vote> updateById (@RequestBody Vote vote){
         return new ResponseEntity<>(this.voteService.update(vote), HttpStatus.CREATED);
     }
 
     @PostMapping
-    public ResponseEntity<Vote> createVote (@RequestBody Vote vote){
-        return new ResponseEntity<>(this.voteService.create(vote), HttpStatus.CREATED);
+    public ResponseEntity<Vote> saveVote (@RequestBody Vote vote){
+        return new ResponseEntity<>(this.voteService.saveVote(vote), HttpStatus.CREATED);
     }
 }

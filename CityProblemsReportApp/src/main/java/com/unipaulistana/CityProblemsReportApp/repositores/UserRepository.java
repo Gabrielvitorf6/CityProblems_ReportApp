@@ -55,4 +55,8 @@ public interface UserRepository extends
     List<User> findUsersByCreatedDateIsAfter(Instant createdDateAfter);
 
     void deleteUserById(UUID id);
+
+    List<User> findAll();
+
+    User save(User user);
 }

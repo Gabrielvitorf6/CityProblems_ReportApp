@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(UUID id) {
-        return (User) this.repository.findById(id).orElse(null);
+        return (User) this.repository.findUserById(id).orElse(null);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    public void deleteById(UUID id) {
+    public void deleteUserById(UUID id) {
         this.repository.deleteUserById(id);
     }
 

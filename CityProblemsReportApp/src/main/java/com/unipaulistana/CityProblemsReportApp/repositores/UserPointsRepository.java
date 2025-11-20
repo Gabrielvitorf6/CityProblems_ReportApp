@@ -16,4 +16,8 @@ public interface UserPointsRepository extends JpaRepository<User_Points, UUID> {
     Optional<User_Points> findUser_PointsById(UUID id);
 
     void deleteById(UUID id);
+
+    List<User_Points> findAll();
+
+    User_Points save(User_Points userPoints);
 }

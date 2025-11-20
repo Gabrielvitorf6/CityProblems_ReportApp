@@ -17,7 +17,7 @@ public interface UserService {
 
     User findByCPF(String CPF);
 
-    void deleteById(UUID id);
+    void deleteUserById(UUID id);
 
     User create(User user);
 }

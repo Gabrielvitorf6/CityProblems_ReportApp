@@ -38,22 +38,6 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public Optional<Vote> findById(UUID id) {
-        return Optional.empty();
-    }
+    public Vote update(Vote vote) { return this.voteRepository.save(vote); }
 
-    @Override
-    public void deleteById(UUID id) {
-
-    }
-
-    @Override
-    public Optional<Vote> update(Vote vote) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Vote create(Vote vote) {
-        return null;
-    }
 }
