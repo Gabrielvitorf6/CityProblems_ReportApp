@@ -20,41 +20,36 @@ public class ProfileTagServiceImpl implements ProfileTagService {
 
     @Override
     public Optional<Profile_tag> getTagById(UUID id) {
-        return profileTagRepository.findById(id);
+        return profileTagRepository.findProfile_tagById(id);
     }
 
     @Override
     public List<Profile_tag> getAllTags() {
         return profileTagRepository.findAll();
     }
-
-    @Override
-    public Profile_tag saveTag(Profile_tag tag) {
-        return profileTagRepository.save(tag);
-    }
-
-    @Override
-    public void deleteTag(UUID id) {
-        profileTagRepository.deleteById(id);
-    }
-
-    @Override
-    public Optional<Profile_tag> findById(UUID id) {
-        return Optional.empty();
-    }
-
     @Override
     public void deleteById(UUID id) {
-
-    }
-
-    @Override
-    public Optional<Profile_tag> update(Profile_tag profileTag) {
-        return Optional.empty();
+    this.profileTagRepository.deleteById(id);
     }
 
     @Override
     public Profile_tag create(Profile_tag profileTag) {
-        return null;
+        return this.profileTagRepository.save(profileTag);
     }
+
+    @Override
+    public List<Profile_tag> findByTitleLike(String title) {
+        return this.profileTagRepository.findProfile_tagsByTitleLike(title);
+    }
+
+    @Override
+    public List<Profile_tag> findByDescriptionLike(String description) {
+        return this.profileTagRepository.findProfile_tagsByDescriptionLike(description);
+    }
+
+    @Override
+    public List<Profile_tag> findByUserProfileId(UUID id) {
+        return this.profileTagRepository.findAllByUserProfile_Id(id);
+    }
+
 }

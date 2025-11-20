@@ -16,13 +16,7 @@ public interface ProfileTagRepository extends JpaRepository<Profile_tag, UUID> {
 
     List<Profile_tag> findProfile_tagsByDescriptionLike(String description);
 
-    List<Profile_tag> findAllByUserProfile(User_profile userProfile);
-
-    Optional<Profile_tag> findById(UUID id);
-
-    List<Profile_tag> findAll();
-
-    Profile_tag save(Profile_tag tag);
+    List<Profile_tag> findAllByUserProfile_Id(UUID userProfileId);
 
     void deleteById(UUID id);
 }

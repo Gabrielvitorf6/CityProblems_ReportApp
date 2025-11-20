@@ -8,14 +8,14 @@ import java.util.UUID;
 public interface ProfileTagService {
     Optional<Profile_tag> getTagById(UUID id);
     List<Profile_tag> getAllTags();
-    Profile_tag saveTag(Profile_tag tag);
-    void deleteTag(UUID id);
-
-    Optional<Profile_tag> findById(UUID id);
 
     void deleteById(UUID id);
 
-    Optional<Profile_tag> update(Profile_tag profileTag);
-
     Profile_tag create(Profile_tag profileTag);
+
+    List<Profile_tag> findByTitleLike(String title);
+
+    List<Profile_tag> findByDescriptionLike(String description);
+
+    List<Profile_tag> findByUserProfileId(UUID id);
 }
