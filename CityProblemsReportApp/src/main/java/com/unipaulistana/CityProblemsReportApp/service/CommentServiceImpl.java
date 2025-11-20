@@ -58,6 +58,8 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment createComment(Comment comment) {
+        if(comment.getId() == null)
+            comment.setId(UUID.randomUUID());
         return commentRepository.save(comment);
     }
 

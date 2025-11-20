@@ -20,21 +20,23 @@ public class PointOfReportServiceImpl implements PointOfReportService {
 
     @Override
     public Optional<PointOfReport> getPointOfReportById(UUID id) {
-        return pointRepository.findPointOfReportById(id);
+        return this.pointRepository.findPointOfReportById(id);
     }
 
     @Override
     public List<PointOfReport> findAll() {
-        return pointRepository.findAll();
+        return this.pointRepository.findAll();
     }
 
     @Override
     public PointOfReport create(PointOfReport point) {
-        return pointRepository.save(point);
+        if(point.getId() == null)
+            point.setId(UUID.randomUUID());
+        return this.pointRepository.save(point);
     }
     @Override
     public void deletePointById(UUID id) {
-        this.pointRepository.deletePointOfReportById(id);
+        this.pointRepository.deleteById(id);
     }
 
     @Override
@@ -90,25 +92,5 @@ public class PointOfReportServiceImpl implements PointOfReportService {
     @Override
     public List<PointOfReport> findPointsOfReportByPointOfReportId(UUID pointOfReportTagID) {
         return this.pointRepository.findPointOfReportsByPointOfReportTag_ID(pointOfReportTagID);
-    }
-
-    @Override
-    public Optional<PointOfReport> findById(UUID id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public void deleteById(UUID id) {
-
-    }
-
-    @Override
-    public Optional<PointOfReport> update(PointOfReport pointOfReport) {
-        return Optional.empty();
-    }
-
-    @Override
-    public PointOfReport create(PointOfReport pointOfReport) {
-        return null;
     }
 }

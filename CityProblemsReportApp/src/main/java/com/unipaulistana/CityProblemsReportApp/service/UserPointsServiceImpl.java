@@ -19,41 +19,28 @@ public class UserPointsServiceImpl implements UserPointsService {
 
     @Override
     public Optional<User_Points> getPointsById(UUID id) {
-        return userPointsRepository.findUser_PointsById(id);
+        return this.userPointsRepository.findUser_PointsById(id);
     }
 
     @Override
-    public List<UserPointsService> getAllPoints() {
-        return userPointsRepository.findAll();
+    public List<User_Points> getAllPoints() {
+        return this.userPointsRepository.findAll();
     }
-
-    @Override
-    public User_Points savePoints(User_Points points) {
-        return userPointsRepository.save(points);
-    }
-
-    @Override
-    public void deletePoints(UUID id) {
-        userPointsRepository.deleteById(id);
-    }
-
-    @Override
-    public Optional<User_Points> findById(UUID id) {
-        return Optional.empty();
-    }
-
     @Override
     public void deleteById(UUID id) {
-
+ this.userPointsRepository.deleteById(id);
     }
-
-    @Override
-    public Optional<User_Points> update(User_Points userPoints) {
-        return Optional.empty();
-    }
-
     @Override
     public User_Points create(User_Points userPoints) {
-        return null;
+        if (userPoints.getId() == null) {
+            userPoints.setId(UUID.randomUUID());
+        }
+            return this.userPointsRepository.save(userPoints);
+
+    }
+
+    @Override
+    public List<User_Points> findAllByUserProfile(UUID id) {
+        return this.userPointsRepository.findAllByUserProfile_Id(id);
     }
 }

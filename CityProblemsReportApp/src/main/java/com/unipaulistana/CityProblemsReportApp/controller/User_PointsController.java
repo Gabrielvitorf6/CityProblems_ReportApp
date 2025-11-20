@@ -1,12 +1,12 @@
 package com.unipaulistana.CityProblemsReportApp.controller;
 
-import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User_Points;
 import com.unipaulistana.CityProblemsReportApp.service.UserPointsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -19,20 +19,28 @@ public class User_PointsController {
         this.userPointsService = userPointsService;
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<User_Points>> findById (@PathVariable UUID id){
-        return ResponseEntity.ok(this.userPointsService.findById(id));
+        return ResponseEntity.ok(this.userPointsService.getPointsById(id));
+    }
+    @GetMapping
+    public ResponseEntity<List<User_Points>> findAll(){
+        return ResponseEntity.ok(this.userPointsService.getAllPoints());
+    }
+    @GetMapping("/userprofile/{id}")
+    public ResponseEntity<List<User_Points>> findAllByUserProfileid(@RequestParam UUID id){
+        return ResponseEntity.ok(this.userPointsService.findAllByUserProfile(id));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Optional<User_Points>> deleteById (@PathVariable UUID id){
         this.userPointsService.deleteById(id);
         return ResponseEntity.notFound().build();
     }
 
     @PutMapping
-    public ResponseEntity<Optional<User_Points>> updateById (@RequestBody User_Points user_Points){
-        return new ResponseEntity<>(this.userPointsService.update(user_Points), HttpStatus.CREATED);
+    public ResponseEntity<User_Points> updateUser_points (@RequestBody User_Points user_Points){
+        return new ResponseEntity<>(this.userPointsService.create(user_Points), HttpStatus.CREATED);
     }
 
     @PostMapping

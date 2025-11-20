@@ -11,11 +11,9 @@ import java.util.UUID;
 
 public interface UserPointsRepository extends JpaRepository<User_Points, UUID> {
 
-    List<User_Points> findAllByUserProfile(User_profile userProfile);
+    List<User_Points> findAllByUserProfile_Id(UUID userProfileId);
 
     Optional<User_Points> findUser_PointsById(UUID id);
-
-    User_Points save(User_Points points);
 
     void deleteById(UUID id);
 }

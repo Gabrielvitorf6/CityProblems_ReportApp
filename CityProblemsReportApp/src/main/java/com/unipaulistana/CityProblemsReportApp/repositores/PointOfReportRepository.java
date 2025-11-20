@@ -35,5 +35,5 @@ public interface PointOfReportRepository extends JpaRepository<PointOfReport, UU
 
     List<PointOfReport> findPointOfReportsByPointOfReportTag_ID(UUID pointOfReportTagID);
 
-    Void deletePointOfReportById(UUID id);
+    void deleteById(UUID id);
 }

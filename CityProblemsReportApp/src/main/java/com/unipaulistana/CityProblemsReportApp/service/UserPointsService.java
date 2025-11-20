@@ -7,15 +7,12 @@ import java.util.UUID;
 
 public interface UserPointsService {
     Optional<User_Points> getPointsById(UUID id);
-    List<UserPointsService> getAllPoints();
-    User_Points savePoints(User_Points points);
-    void deletePoints(UUID id);
 
-    Optional<User_Points> findById(UUID id);
+    List<User_Points> getAllPoints();
 
     void deleteById(UUID id);
 
-    Optional<User_Points> update(User_Points userPoints);
-
     User_Points create(User_Points userPoints);
+
+    List<User_Points> findAllByUserProfile(UUID id);
 }

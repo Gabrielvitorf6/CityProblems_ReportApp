@@ -30,6 +30,8 @@ public class DecorationServiceImpl implements DecorationService {
 
     @Override
     public Decoration create(Decoration decoration) {
+        if(decoration.getId() == null)
+            decoration.setId(UUID.randomUUID());
         return decorationRepository.save(decoration);
     }
 
