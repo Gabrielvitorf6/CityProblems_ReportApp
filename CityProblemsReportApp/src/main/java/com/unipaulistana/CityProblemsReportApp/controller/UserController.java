@@ -58,14 +58,7 @@ public class UserController {
 
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user){
-        return new ResponseEntity<>(this.userService.update(user), HttpStatus.CREATED);
+        return new ResponseEntity<>(this.userService.create(user), HttpStatus.CREATED);
     }
-
-    @PatchMapping
-    public ResponseEntity<User> patchUser(@RequestBody User user){
-        return new ResponseEntity<>(this.userService.partialUpdate(user), HttpStatus.CREATED);
-    }
-
-
 }
 

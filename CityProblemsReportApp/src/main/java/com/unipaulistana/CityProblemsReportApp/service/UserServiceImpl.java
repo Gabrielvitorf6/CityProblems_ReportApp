@@ -46,16 +46,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
-        return null;
-    }
-
-    @Override
-    public User update(User user) {
-        return null;
-    }
-
-    @Override
-    public User partialUpdate(User user) {
-        return null;
+        return this.repository.save(user);
     }
 }
