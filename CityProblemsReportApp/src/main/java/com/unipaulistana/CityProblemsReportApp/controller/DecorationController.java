@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/decorations")
 public class DecorationController {
     private final DecorationService decorationService;
 

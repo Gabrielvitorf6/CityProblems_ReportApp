@@ -56,11 +56,10 @@ public ResponseEntity<List<Comment>> findCommentsByCreatedDateBefore(@PathVariab
         return ResponseEntity.notFound().build();
     }
 
-    @PutMapping()
+    @PutMapping
     public ResponseEntity<Comment> update(@RequestBody Comment comment){
         return new ResponseEntity<>(this.commentService.createComment(comment), HttpStatus.CREATED);
     }
-
     @PostMapping
     public ResponseEntity<Comment> createComment (@RequestBody Comment comment){
         return new ResponseEntity<>(this.commentService.createComment(comment), HttpStatus.CREATED);

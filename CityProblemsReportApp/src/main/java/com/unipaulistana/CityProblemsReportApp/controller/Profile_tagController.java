@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/profiletags")
 public class Profile_tagController {
     private final ProfileTagService profileTagService;
 

@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/pointofreporttags")
 public class PointOfReportTagController {
     private final PointOfReportTagService pointOfReportTagService;
 
