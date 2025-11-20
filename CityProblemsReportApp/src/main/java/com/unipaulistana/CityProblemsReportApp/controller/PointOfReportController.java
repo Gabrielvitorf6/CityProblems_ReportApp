@@ -27,7 +27,6 @@ public class PointOfReportController {
 public ResponseEntity<List<PointOfReport>> findByTitleLike(@PathVariable String title){
         return ResponseEntity.ok(this.pointOfReportService.findByTitleLike(title));
 }
-
     @GetMapping("/{id}")
     public ResponseEntity<Optional<PointOfReport>> findById(@PathVariable UUID id) {
             return ResponseEntity.ok(this.pointOfReportService.getPointOfReportById(id));
@@ -73,13 +72,11 @@ public ResponseEntity<List<PointOfReport>> findByTitleLike(@PathVariable String 
     public ResponseEntity<List<PointOfReport>> findPointsOfReportByPointOfReportTag_ID (@PathVariable UUID pointOfReportTagID){
         return ResponseEntity.ok(this.pointOfReportService.findPointsOfReportByPointOfReportId(pointOfReportTagID));
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<Optional<PointOfReport>> deleteById (@PathVariable UUID id){
         this.pointOfReportService.deletePointById(id);
         return ResponseEntity.notFound().build();
     }
-
     @PutMapping
     public ResponseEntity<PointOfReport> updatePointOfReport(@RequestBody PointOfReport pointOfReport){
         return new ResponseEntity<>(this.pointOfReportService.create(pointOfReport), HttpStatus.CREATED);

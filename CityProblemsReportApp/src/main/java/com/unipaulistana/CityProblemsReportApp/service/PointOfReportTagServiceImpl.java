@@ -20,41 +20,33 @@ public class PointOfReportTagServiceImpl implements PointOfReportTagService {
 
     @Override
     public Optional<PointOfReportTag> getTagById(UUID id) {
-        return tagRepository.findById(id);
+        return this.tagRepository.findByID(id);
     }
 
     @Override
     public List<PointOfReportTag> getAllTags() {
-        return tagRepository.findAll();
+        return this.tagRepository.findAll();
     }
-
-    @Override
-    public PointOfReportTag saveTag(PointOfReportTag tag) {
-        return tagRepository.save(tag);
-    }
-
-    @Override
-    public void deleteTag(UUID id) {
-        tagRepository.deleteById(id);
-    }
-
-    @Override
-    public Optional<PointOfReportTagService> findById(UUID id) {
-        return Optional.empty();
-    }
-
     @Override
     public void deleteById(UUID id) {
-
+        this.tagRepository.deleteById(id);
+    }
+    @Override
+    public List<PointOfReportTag> findByTagTitleLike(String name) {
+        return this.tagRepository.findByTitleLike(name);
+    }
+    @Override
+    public List<PointOfReportTag> findByDescriptionLike(String name) {
+        return this.tagRepository.findByDescriptionLike(name);
     }
 
     @Override
-    public Optional<PointOfReportTag> update(Comment comment) {
-        return Optional.empty();
+    public List<PointOfReportTag> findByPointOfReportId(UUID pointOfReportId) {
+        return this.tagRepository.findPointOfReport_TagsByPointOfReport_Id(pointOfReportId);
     }
 
     @Override
-    public PointOfReportTag create(Comment comment) {
-        return null;
+    public PointOfReportTag create(PointOfReportTag pointOfReportTag) {
+        return this.tagRepository.save(pointOfReportTag);
     }
 }
