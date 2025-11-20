@@ -10,4 +10,12 @@ public interface PostService {
     List<Post> getAllPosts();
     Post savePost(Post post);
     void deletePost(UUID id);
+
+    Optional<Post> findById(UUID id);
+
+    void deleteById(UUID id);
+
+    Optional<Post> update(Post post);
+
+    Post create(Post post);
 }

@@ -36,4 +36,24 @@ public class VoteServiceImpl implements VoteService {
     public void deleteVote(UUID id) {
         voteRepository.deleteById(id);
     }
+
+    @Override
+    public Optional<Vote> findById(UUID id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+
+    }
+
+    @Override
+    public Optional<Vote> update(Vote vote) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Vote create(Vote vote) {
+        return null;
+    }
 }

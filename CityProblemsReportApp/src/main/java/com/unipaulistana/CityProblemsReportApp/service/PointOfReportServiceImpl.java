@@ -91,4 +91,24 @@ public class PointOfReportServiceImpl implements PointOfReportService {
     public List<PointOfReport> findPointsOfReportByPointOfReportId(UUID pointOfReportTagID) {
         return this.pointRepository.findPointOfReportsByPointOfReportTag_ID(pointOfReportTagID);
     }
+
+    @Override
+    public Optional<PointOfReport> findById(UUID id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteById(UUID id) {
+
+    }
+
+    @Override
+    public Optional<PointOfReport> update(PointOfReport pointOfReport) {
+        return Optional.empty();
+    }
+
+    @Override
+    public PointOfReport create(PointOfReport pointOfReport) {
+        return null;
+    }
 }

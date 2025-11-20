@@ -11,4 +11,12 @@ public interface VoteService {
     List<Vote> getAllVotes();
     Vote saveVote(Vote vote);
     void deleteVote(UUID id);
+
+    Optional<Vote> findById(UUID id);
+
+    void deleteById(UUID id);
+
+    Optional<Vote> update(Vote vote);
+
+    Vote create(Vote vote);
 }
