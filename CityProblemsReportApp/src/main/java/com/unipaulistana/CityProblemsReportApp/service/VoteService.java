@@ -1,6 +1,7 @@
 
 package com.unipaulistana.CityProblemsReportApp.service;
 
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Vote;
 import java.util.List;
 import java.util.Optional;
@@ -12,4 +13,8 @@ public interface VoteService {
     Vote saveVote(Vote vote);
     void deleteVote(UUID id);
     Vote update(Vote vote);
+
+    List<Vote> findAllByPost_Id(UUID id);
+
+    List<Vote> findAllByComment_Id(UUID id);
 }

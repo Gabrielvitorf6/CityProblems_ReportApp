@@ -1,5 +1,7 @@
 package com.unipaulistana.CityProblemsReportApp.service;
 
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Comment;
+import com.unipaulistana.CityProblemsReportApp.domainmodel.Post;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.Vote;
 import com.unipaulistana.CityProblemsReportApp.repositores.VoteRepository;
 import org.springframework.stereotype.Service;
@@ -19,25 +21,35 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public Optional<Vote> getVoteById(UUID id) {
-        return voteRepository.findById(id);
+        return this.voteRepository.findVoteById(id);
     }
 
     @Override
     public List<Vote> getAllVotes() {
-        return voteRepository.findAll();
+        return this.voteRepository.findAll();
     }
 
     @Override
     public Vote saveVote(Vote vote) {
-        return voteRepository.save(vote);
+        return this.voteRepository.save(vote);
     }
 
     @Override
     public void deleteVote(UUID id) {
-        voteRepository.deleteById(id);
+        this.voteRepository.deleteById(id);
     }
 
     @Override
     public Vote update(Vote vote) { return this.voteRepository.save(vote); }
+
+    @Override
+    public List<Vote> findAllByPost_Id(UUID postid) {
+        return this.voteRepository.findAllByPost_Id(postid);
+    }
+
+    @Override
+    public List<Vote> findAllByComment_Id(UUID id) {
+        return  this.voteRepository.findAllByComment_Id(id);
+    }
 
 }

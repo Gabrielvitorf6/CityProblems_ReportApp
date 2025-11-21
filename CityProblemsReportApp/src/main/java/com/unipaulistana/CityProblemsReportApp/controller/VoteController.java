@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,7 +23,18 @@ public class VoteController {
     public ResponseEntity<Optional<Vote>> getVoteById (@PathVariable UUID id){
         return ResponseEntity.ok(this.voteService.getVoteById(id));
     }
-
+    @GetMapping
+    public ResponseEntity<List<Vote>> getAllVotes() {
+        return ResponseEntity.ok(this.voteService.getAllVotes());
+    }
+    @GetMapping("/post/{id}")
+    public ResponseEntity<List<Vote>> getAllVotesByPostId(@PathVariable UUID id) {
+        return ResponseEntity.ok(this.voteService.findAllByPost_Id(id));
+    }
+    @GetMapping("/comment/{id}")
+    public ResponseEntity<List<Vote>> getAllVotesByComment(@PathVariable UUID id) {
+        return ResponseEntity.ok(this.voteService.findAllByComment_Id(id));
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Optional<Vote>> deleteVote (@PathVariable UUID id){
         this.voteService.deleteVote(id);
@@ -30,7 +42,7 @@ public class VoteController {
     }
 
     @PutMapping
-    public ResponseEntity<Vote> updateById (@RequestBody Vote vote){
+    public ResponseEntity<Vote> updateVote(@RequestBody Vote vote){
         return new ResponseEntity<>(this.voteService.update(vote), HttpStatus.CREATED);
     }
 

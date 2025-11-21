@@ -15,17 +15,9 @@ public interface VoteRepository extends JpaRepository
 
     Optional<Vote> findVoteById(UUID id);
 
-    List<Vote> findAllByPost(Post post);
+    List<Vote> findAllByPost_Id(UUID postId);
 
-    List<Vote> findAllByComment(Comment comment);
-
-    List<Vote> findAllByPostAndComment(Post post, Comment comment);
-
-    Optional<Vote> findById(UUID id);
-
-    List<Vote> findAll();
-
-    Vote save(Vote vote);
+    List<Vote> findAllByComment_Id(UUID commentId);
 
     void deleteById(UUID id);
 
