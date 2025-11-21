@@ -30,8 +30,6 @@ public interface UserRepository extends
 
     Optional<User> findUserByEmail(String email);
 
-    Optional<User> findByUsernameAndEmail(String username, String email);
-
     Optional<User> findByPhone(String phone);
 
     Optional<User> findUserByCpf(String cpf);
@@ -48,7 +46,7 @@ public interface UserRepository extends
 
     List<User> findUsersByCEP(String cep);
 
-    Optional<User> findUserByUserProfile(User_profile userProfile);
+    Optional<User> findUserByUserProfile_Id(UUID userProfileId);
 
     List<User> findUsersByCreatedDateBefore(Instant createdDateBefore);
 
@@ -56,7 +54,4 @@ public interface UserRepository extends
 
     void deleteUserById(UUID id);
 
-    List<User> findAll();
-
-    User save(User user);
 }
