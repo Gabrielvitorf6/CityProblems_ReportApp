@@ -110,4 +110,12 @@ public class Post extends Auditable {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
 }
