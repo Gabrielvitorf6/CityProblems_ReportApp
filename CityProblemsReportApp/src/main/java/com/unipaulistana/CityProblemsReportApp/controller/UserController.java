@@ -35,17 +35,14 @@ public class UserController {
         this.userService.deleteUserById(id);
         return ResponseEntity.notFound().build();
     }
-
     @GetMapping("/{username}")
     public ResponseEntity<List<User>> findByUsernameLike(@PathVariable String username) {
         return ResponseEntity.ok(this.userService.findByUsernameLike(username));
     }
-
     @GetMapping("/{email}")
     public ResponseEntity<Optional<User>> findByEmail(@PathVariable String email) {
         return ResponseEntity.ok(this.userService.findByEmail(email));
     }
-
     @GetMapping("/{CPF}")
     public ResponseEntity<Optional<User>> findByCPF(@PathVariable String CPF) {
         return ResponseEntity.ok(this.userService.findByCPF(CPF));
@@ -78,10 +75,10 @@ public class UserController {
     public ResponseEntity<List<User>> findByCountry(@PathVariable String country) {
         return ResponseEntity.ok(this.userService.findByCountry(country));
     }
-@GetMapping("/{cep}")
-public ResponseEntity<List<User>> findByCep(@PathVariable String cep) {
+    @GetMapping("/{cep}")
+    public ResponseEntity<List<User>> findByCep(@PathVariable String cep) {
         return ResponseEntity.ok(this.userService.findByCep(cep));
-}
+    }
     @GetMapping("/userprofile/{userProfileId}")
     public ResponseEntity<Optional<User>> findByUserProfileId(@PathVariable UUID userProfileId) {
         return ResponseEntity.ok(this.userService.findByUserProfileId(userProfileId));
@@ -98,7 +95,6 @@ public ResponseEntity<List<User>> findByCep(@PathVariable String cep) {
     public ResponseEntity<User> createUser(@RequestBody User user){
         return new ResponseEntity<>(this.userService.create(user), HttpStatus.CREATED);
     }
-
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user){
         return new ResponseEntity<>(this.userService.create(user), HttpStatus.CREATED);
