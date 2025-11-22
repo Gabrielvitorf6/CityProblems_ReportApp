@@ -4,6 +4,8 @@ package com.unipaulistana.CityProblemsReportApp.service;
 import com.unipaulistana.CityProblemsReportApp.repositores.UserRepository;
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -107,4 +109,8 @@ public class UserServiceImpl implements UserService {
         return this.repository.findUsersByCreatedDateIsAfter(createdDate);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
+    }
 }

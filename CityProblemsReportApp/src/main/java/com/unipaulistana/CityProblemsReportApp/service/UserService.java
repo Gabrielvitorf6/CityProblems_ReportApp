@@ -1,6 +1,7 @@
 package com.unipaulistana.CityProblemsReportApp.service;
 
 import com.unipaulistana.CityProblemsReportApp.domainmodel.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.time.Instant;
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface UserService {
+public interface UserService extends UserDetailsService {
 
     List<User> findAll();
 
