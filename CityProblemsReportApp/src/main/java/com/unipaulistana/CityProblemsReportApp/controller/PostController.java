@@ -38,11 +38,11 @@ public class PostController {
     public ResponseEntity<Optional<Post>> findByPointOfReportId(@PathVariable UUID pointOfReportId){
         return ResponseEntity.ok(this.postService.findByPointOfReportId(pointOfReportId));
     }
-    @GetMapping("/{createdDate}")
+    @GetMapping("/createdafter/{createdDate}")
     public ResponseEntity<List<Post>> findByCreatedDateAfter(@PathVariable Instant createdDate){
         return ResponseEntity.ok(this.postService.findByCreationDateAfter(createdDate));
     }
-    @GetMapping("/{createdDate}")
+    @GetMapping("/createdbefore/{createdDate}")
     public ResponseEntity<List<Post>> findByCreatedDateBefore(@PathVariable Instant createdDate){
         return ResponseEntity.ok(this.postService.findByCreationDateBefore(createdDate));
     }

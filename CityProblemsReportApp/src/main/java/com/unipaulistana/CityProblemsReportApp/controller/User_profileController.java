@@ -20,6 +20,10 @@ public class User_profileController {
     public User_profileController(UserProfileService userProfileService) {
         this.userProfileService = userProfileService;
     }
+@GetMapping
+public ResponseEntity<List<User_profile>> findAll() {
+        return ResponseEntity.ok(this.userProfileService.getAllProfiles());
+}
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<User_profile>> findById (@PathVariable UUID id){
@@ -43,22 +47,17 @@ public class User_profileController {
         return ResponseEntity.ok(this.userProfileService.findByUser(user));
     }
 
-    @GetMapping("/{commentsIsGreaterThan}")
-    public ResponseEntity<List<User_profile>> findByCommentsGreaterThan (@PathVariable List<Comment> commentsIsGreaterThan) {
-        return ResponseEntity.ok(this.userProfileService.findByCommentsGreaterThan(commentsIsGreaterThan));
-    }
-
     @GetMapping("/{profileTags}")
     public ResponseEntity<List<User_profile>> findByProfileTags (@PathVariable Set<Profile_tag> profileTags) {
         return ResponseEntity.ok(this.userProfileService.findByProfileTags(profileTags));
     }
 
-    @GetMapping("/{createdDateBefore}")
+    @GetMapping("/createdbefore/{createdDateBefore}")
     public ResponseEntity<List<User_profile>> findByCreatedDateBefore (@PathVariable Instant createdDateBefore) {
         return ResponseEntity.ok(this.userProfileService.findByCreatedDateBefore(createdDateBefore));
     }
 
-    @GetMapping("/{createdDateAfter}")
+    @GetMapping("/createdafter/{createdDateAfter}")
     public ResponseEntity<List<User_profile>> findByCreatedDateIsAfter (@PathVariable Instant createdDateAfter) {
         return ResponseEntity.ok(this.userProfileService.findByCreatedDateIsAfter(createdDateAfter));
     }

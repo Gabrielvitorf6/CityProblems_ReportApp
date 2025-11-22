@@ -42,11 +42,11 @@ public ResponseEntity<List<Comment>> findAll(Post post){
     public ResponseEntity<List<Comment>> findCommentsByPost(@PathVariable Post post){
         return ResponseEntity.ok(this.commentService.getAllByPost(post));
     }
-    @GetMapping("/{instant}")
+    @GetMapping("/createdafter/{instant}")
 public ResponseEntity<List<Comment>> findCommentsByCreatedDateAfter(@PathVariable Instant instant){
         return ResponseEntity.ok(this.commentService.getCommentsByCreatedDateAfter(instant));
     }
-    @GetMapping("/{instant}")
+    @GetMapping("/createdbefore/{instant}")
 public ResponseEntity<List<Comment>> findCommentsByCreatedDateBefore(@PathVariable Instant instant){
         return ResponseEntity.ok(this.commentService.getCommentsByCreatedDateBefore(instant));
     }

@@ -14,7 +14,6 @@ public interface UserProfileService {
     List<User_profile> findByBioLike(String bio);
     List<User_profile> findByPostsGreaterThan(List<Post> postsIsGreaterThan);
     Optional<User_profile> findByUser(User user);
-    List<User_profile> findByCommentsGreaterThan(List<Comment> commentsIsGreaterThan);
     List<User_profile> findByProfileTags(Set<Profile_tag> profileTags);
     List<User_profile> findByCreatedDateBefore(Instant createdDateBefore);
     List<User_profile> findByCreatedDateIsAfter(Instant createdDateAfter);

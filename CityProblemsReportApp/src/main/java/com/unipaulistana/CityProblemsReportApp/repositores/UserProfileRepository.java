@@ -21,8 +21,6 @@ public interface UserProfileRepository extends JpaRepository<User_profile, UUID>
 
     Optional<User_profile> findUser_profileByUser(User user);
 
-    List<User_profile> findUser_profilesByCommentsGreaterThan(List<Comment> commentsIsGreaterThan);
-
     List<User_profile> findUser_profilesByProfileTags(Set<Profile_tag> profileTags);
 
     List<User_profile> findUser_profilesByCreatedDateBefore(Instant createdDateBefore);
@@ -30,8 +28,6 @@ public interface UserProfileRepository extends JpaRepository<User_profile, UUID>
     List<User_profile> findUser_profileByCreatedDateIsAfter(Instant createdDateAfter);
 
     List<User_profile> findAll();
-
-    User_profile save(User_profile profile);
 
     void deleteById(UUID id);
 }

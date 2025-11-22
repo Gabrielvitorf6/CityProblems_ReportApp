@@ -37,9 +37,6 @@ public class UserProfileServiceImpl implements UserProfileService {
     public Optional<User_profile> findByUser(User user) { return this.userProfileRepository.findUser_profileByUser(user); }
 
     @Override
-    public List<User_profile> findByCommentsGreaterThan(List<Comment> commentsIsGreaterThan) { return this.userProfileRepository.findUser_profilesByCommentsGreaterThan(commentsIsGreaterThan); }
-
-    @Override
     public List<User_profile> findByProfileTags(Set<Profile_tag> profileTags) { return this.userProfileRepository.findUser_profilesByProfileTags(profileTags); }
 
     @Override
