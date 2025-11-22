@@ -35,7 +35,7 @@ public class VoteController {
     public ResponseEntity<List<Vote>> getAllVotesByComment(@PathVariable UUID id) {
         return ResponseEntity.ok(this.voteService.findAllByComment_Id(id));
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<Vote>> deleteVote (@PathVariable UUID id){
         this.voteService.deleteVote(id);
         return ResponseEntity.notFound().build();

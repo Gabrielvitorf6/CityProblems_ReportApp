@@ -46,7 +46,7 @@ public class PostController {
     public ResponseEntity<List<Post>> findByCreatedDateBefore(@PathVariable Instant createdDate){
         return ResponseEntity.ok(this.postService.findByCreationDateBefore(createdDate));
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<Post>> deleteById (@PathVariable UUID id){
         this.postService.deleteById(id);
         return ResponseEntity.notFound().build();

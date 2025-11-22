@@ -24,7 +24,7 @@ public class User_profileController {
         return ResponseEntity.ok(this.userProfileService.getProfileById(id));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<User_profile>> deleteById (@PathVariable UUID id){
         this.userProfileService.deleteById(id);
         return ResponseEntity.notFound().build();

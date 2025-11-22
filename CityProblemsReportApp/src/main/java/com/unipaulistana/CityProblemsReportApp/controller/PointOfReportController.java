@@ -64,7 +64,7 @@ public ResponseEntity<List<PointOfReport>> findByTitleLike(@PathVariable String 
         return ResponseEntity.ok(this.pointOfReportService.findByLatitudeAndLongitude(latitude, longitude
         ));
     }
-    @GetMapping("/{id}")
+    @GetMapping("/post/{id}")
     public ResponseEntity<List<PointOfReport>> findPointOfReportByPostId (@PathVariable UUID postid){
         return ResponseEntity.ok(this.pointOfReportService.findByPostId(postid));
     }
@@ -72,7 +72,7 @@ public ResponseEntity<List<PointOfReport>> findByTitleLike(@PathVariable String 
     public ResponseEntity<List<PointOfReport>> findPointsOfReportByPointOfReportTag_ID (@PathVariable UUID pointOfReportTagID){
         return ResponseEntity.ok(this.pointOfReportService.findPointsOfReportByPointOfReportId(pointOfReportTagID));
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<PointOfReport>> deleteById (@PathVariable UUID id){
         this.pointOfReportService.deletePointById(id);
         return ResponseEntity.notFound().build();

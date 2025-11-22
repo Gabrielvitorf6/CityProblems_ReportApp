@@ -30,7 +30,7 @@ public class UserController {
     public ResponseEntity<Optional<User>> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.userService.findById(id));
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable UUID id){
         this.userService.deleteUserById(id);
         return ResponseEntity.notFound().build();

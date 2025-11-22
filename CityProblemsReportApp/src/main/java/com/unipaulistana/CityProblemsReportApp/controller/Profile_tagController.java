@@ -41,7 +41,7 @@ public class Profile_tagController {
         return ResponseEntity.ok(this.profileTagService.findByUserProfileId(id));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<Profile_tag>> deleteById (@PathVariable UUID id){
         this.profileTagService.deleteById(id);
         return ResponseEntity.notFound().build();

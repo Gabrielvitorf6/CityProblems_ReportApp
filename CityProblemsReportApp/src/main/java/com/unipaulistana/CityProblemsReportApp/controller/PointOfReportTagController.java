@@ -40,7 +40,7 @@ public class PointOfReportTagController {
         return ResponseEntity.ok(this.pointOfReportTagService.findByPointOfReportId(pointOfReportId));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<PointOfReportTag>> deleteById (@PathVariable UUID id){
         this.pointOfReportTagService.deleteById(id);
         return ResponseEntity.notFound().build();

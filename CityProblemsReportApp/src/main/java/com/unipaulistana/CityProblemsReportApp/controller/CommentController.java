@@ -34,11 +34,11 @@ public ResponseEntity<List<Comment>> findAll(Post post){
     public ResponseEntity<List<Comment>> findCommentsLike(@PathVariable String string){
         return ResponseEntity.ok(this.commentService.getCommentsByCommentContaining(string));
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<List<Comment>> findCommentsByUserProfile(@PathVariable UUID id){
-        return ResponseEntity.ok(this.commentService.getCommentsByUserProfile(id));
+    @GetMapping("/userprofile/{userprofileid}")
+    public ResponseEntity<List<Comment>> findCommentsByUserProfile(@PathVariable UUID userprofileid){
+        return ResponseEntity.ok(this.commentService.getCommentsByUserProfile(userprofileid));
     }
-    @GetMapping("{post}")
+    @GetMapping("/post/{post}")
     public ResponseEntity<List<Comment>> findCommentsByPost(@PathVariable Post post){
         return ResponseEntity.ok(this.commentService.getAllByPost(post));
     }
@@ -50,7 +50,7 @@ public ResponseEntity<List<Comment>> findCommentsByCreatedDateAfter(@PathVariabl
 public ResponseEntity<List<Comment>> findCommentsByCreatedDateBefore(@PathVariable Instant instant){
         return ResponseEntity.ok(this.commentService.getCommentsByCreatedDateBefore(instant));
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<Comment>> deleteById (@PathVariable UUID id){
         this.commentService.deleteById(id);
         return ResponseEntity.notFound().build();

@@ -32,7 +32,7 @@ public class User_PointsController {
         return ResponseEntity.ok(this.userPointsService.findAllByUserProfile(id));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Optional<User_Points>> deleteById (@PathVariable UUID id){
         this.userPointsService.deleteById(id);
         return ResponseEntity.notFound().build();

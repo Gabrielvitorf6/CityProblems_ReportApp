@@ -52,7 +52,7 @@ public ResponseEntity<List<Decoration>> findAll(){
         return ResponseEntity.ok(this.decorationService.getDecorationsByUSerProfile_Id(userprofileID));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<List<Decoration>> deleteById (@PathVariable UUID id){
         this.decorationService.deleteById(id);
         return ResponseEntity.notFound().build();
