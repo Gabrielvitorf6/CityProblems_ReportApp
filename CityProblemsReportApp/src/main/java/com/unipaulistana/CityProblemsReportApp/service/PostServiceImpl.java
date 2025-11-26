@@ -32,6 +32,9 @@ public class PostServiceImpl implements PostService {
     }
     @Override
     public Post create(Post post) {
+        if(post.getId() == null){
+            post.setId(UUID.randomUUID());
+        }
         return this.postRepository.save(post);
     }
     @Override

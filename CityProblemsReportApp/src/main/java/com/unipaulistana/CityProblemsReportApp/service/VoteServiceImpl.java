@@ -31,6 +31,9 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public Vote saveVote(Vote vote) {
+        if(vote.getId() == null){
+            vote.setId(UUID.randomUUID());
+        }
         return this.voteRepository.save(vote);
     }
 

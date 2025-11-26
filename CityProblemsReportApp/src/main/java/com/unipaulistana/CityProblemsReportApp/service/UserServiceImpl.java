@@ -46,6 +46,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
+        if(user.getId() == null){
+            user.setId(UUID.randomUUID());
+        }
         return this.repository.save(user);
     }
 

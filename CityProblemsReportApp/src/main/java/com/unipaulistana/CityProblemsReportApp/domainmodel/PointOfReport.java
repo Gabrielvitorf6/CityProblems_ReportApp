@@ -15,7 +15,6 @@ import java.util.UUID;
 @Entity
 @Table(indexes = {
         @Index(name = "IDX_POST", columnList = "post"),
-        @Index(name = "IDX_POINTOFREPORTTAG", columnList = "pointOfReportTag"),
         @Index(name = "IDX_CEP", columnList = "CEP"),
         @Index(name = "IDX_ADRESS", columnList = "adress")
 })

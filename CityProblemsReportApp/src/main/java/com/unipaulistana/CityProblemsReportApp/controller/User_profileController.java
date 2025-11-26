@@ -69,8 +69,8 @@ public ResponseEntity<List<User_profile>> findAll() {
     }
 
     @PutMapping
-    public ResponseEntity<Optional<User_profile>> update (@RequestBody User_profile user_profile){
-        return new ResponseEntity<>(this.userProfileService.update(user_profile), HttpStatus.CREATED);
+    public ResponseEntity<User_profile> update (@RequestBody User_profile user_profile){
+        return new ResponseEntity<>(this.userProfileService.saveProfile(user_profile), HttpStatus.CREATED);
     }
 
     @PostMapping

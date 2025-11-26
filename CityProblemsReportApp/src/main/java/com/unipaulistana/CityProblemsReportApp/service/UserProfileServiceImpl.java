@@ -52,13 +52,13 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public User_profile saveProfile(User_profile profile) {
-        return userProfileRepository.save(profile);
+        if(profile.getId() == null){
+            profile.setId(UUID.randomUUID());
+        }
+        return this.userProfileRepository.save(profile);
     }
 
     @Override
     public void deleteById(UUID id) { this.userProfileRepository.deleteById(id); }
-
-    @Override
-    public Optional<User_profile> update(User_profile user_Profile) { return Optional.ofNullable(this.userProfileRepository.save(user_Profile)); }
 
 }

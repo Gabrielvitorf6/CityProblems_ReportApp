@@ -34,6 +34,9 @@ public class ProfileTagServiceImpl implements ProfileTagService {
 
     @Override
     public Profile_tag create(Profile_tag profileTag) {
+        if(profileTag.getId() == null){
+            profileTag.setId(UUID.randomUUID());
+        }
         return this.profileTagRepository.save(profileTag);
     }
 

@@ -34,23 +34,22 @@ public class User_profile extends Auditable {
     @Column(nullable = true)
     private int Totalupvotes; //joincolumn de post
 
-    @OneToMany(mappedBy = "userProfile",  fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Profile_tag> profileTags; //tags do perfil : OnetoMany com Profile_tag
 
-    @OneToMany(mappedBy = "userProfile",   fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Decoration> decorationsList; //lista de condecorações : OneToMany (Essa em específico puxa o total de condecorções da conta)
 
-    @OneToMany(mappedBy = "userProfile", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Post> posts; //Posts do perfil : OneToMany
 
-    @OneToMany(mappedBy = "userProfile", fetch =  FetchType.EAGER)
+    @OneToMany( fetch =  FetchType.EAGER)
     private List<User_Points> userPoints;
 
     @OneToOne
-    //@JoinColumn(name = "user")
     private User user; //Usuário do perfil : OneToOne com User
 
-    @OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL)
+    @OneToMany( cascade = CascadeType.ALL)
     private List<Comment> comments;
     //Coluna com seguidores e seguindo tem que ser implementada, falar com o professor
 

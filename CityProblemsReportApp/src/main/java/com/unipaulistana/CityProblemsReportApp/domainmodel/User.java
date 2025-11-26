@@ -13,7 +13,7 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
+@Table(name = "tb_users",indexes = {@Index(name = "IDX_USERNAMEPASSWORD", columnList = "username , password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
         @Index(name = "IDX_PASSWORD", columnList = "password"),
         @Index(name = "IDX_EMAIL", columnList = "email"),
@@ -61,7 +61,7 @@ public class User extends Auditable {
     @Column(nullable = false, length = 8)
     private String CEP;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne
     private User_profile userProfile; //perfil do user : onetoone com userprofile
 
     public UUID getId() {

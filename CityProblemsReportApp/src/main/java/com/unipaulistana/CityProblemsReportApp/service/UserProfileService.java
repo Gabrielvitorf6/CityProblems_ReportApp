@@ -20,5 +20,4 @@ public interface UserProfileService {
     List<User_profile> getAllProfiles();
     User_profile saveProfile(User_profile profile);
     void deleteById(UUID id);
-    Optional<User_profile> update(User_profile userProfile);
 }

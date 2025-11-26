@@ -47,6 +47,9 @@ public class PointOfReportTagServiceImpl implements PointOfReportTagService {
 
     @Override
     public PointOfReportTag create(PointOfReportTag pointOfReportTag) {
+        if(pointOfReportTag.getID() == null){
+            pointOfReportTag.setID(UUID.randomUUID());
+        }
         return this.tagRepository.save(pointOfReportTag);
     }
 }
